@@ -213,6 +213,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &803489234 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 490018, guid: dc06161b6d97feb419f45f03b62e14b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1616794836}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &943022779
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,6 +312,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1135117078 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4000011474053580, guid: dc06161b6d97feb419f45f03b62e14b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1616794836}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1432296942
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -313,6 +325,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1432296944, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
+      propertyPath: leftHand
+      value: 
+      objectReference: {fileID: 1135117078}
+    - target: {fileID: 1432296944, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
+      propertyPath: rightHand
+      value: 
+      objectReference: {fileID: 803489234}
     - target: {fileID: 1000012660339372, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
       propertyPath: m_Name
       value: Ball
@@ -363,26 +383,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
---- !u!1 &1432296943 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1000012660339372, guid: 1a6c6cf1c3750c8469a115e8acb64291,
-    type: 3}
-  m_PrefabInstance: {fileID: 1432296942}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1432296944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1432296943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32ed23bf291b3fa40873b4eb5d13e2e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftHand: {fileID: 0}
-  rightHand: {fileID: 0}
 --- !u!1001 &1616794836
 PrefabInstance:
   m_ObjectHideFlags: 0
