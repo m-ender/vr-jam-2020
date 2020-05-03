@@ -28,18 +28,18 @@ namespace VRJam2020
 
 		private void Update()
 		{
-			if (SteamVR_Actions.default_GrabPinch.GetStateDown(leftHandSource))
+			if (SteamVR_Actions.default_SummonBall.GetStateDown(leftHandSource))
 			{
 				StartFlying(leftHand);
 			}
-			else if (SteamVR_Actions.default_GrabPinch.GetStateDown(rightHandSource))
+			else if (SteamVR_Actions.default_SummonBall.GetStateDown(rightHandSource))
 			{
 				StartFlying(rightHand);
 			}
 
 			if (isFlying && (
-				targetHand == leftHand && SteamVR_Actions.default_GrabPinch.GetStateUp(leftHandSource)
-				|| targetHand == rightHand && SteamVR_Actions.default_GrabPinch.GetStateUp(rightHandSource)))
+				targetHand == leftHand && SteamVR_Actions.default_SummonBall.GetStateUp(leftHandSource)
+				|| targetHand == rightHand && SteamVR_Actions.default_SummonBall.GetStateUp(rightHandSource)))
 			{
 				StopFlying();
 			}

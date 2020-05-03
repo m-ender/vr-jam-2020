@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
-public class TeleportTarget : MonoBehaviour
+namespace VRJam2020
 {
+	public class TeleportTarget : MonoBehaviour
+	{
+	} 
 }

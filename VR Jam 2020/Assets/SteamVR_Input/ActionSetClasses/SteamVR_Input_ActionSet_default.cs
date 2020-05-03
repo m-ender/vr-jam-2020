@@ -17,14 +17,6 @@ namespace Valve.VR
     public class SteamVR_Input_ActionSet_default : Valve.VR.SteamVR_ActionSet
     {
         
-        public virtual SteamVR_Action_Boolean InteractUI
-        {
-            get
-            {
-                return SteamVR_Actions.default_InteractUI;
-            }
-        }
-        
         public virtual SteamVR_Action_Boolean Teleport
         {
             get
@@ -33,19 +25,19 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Boolean GrabPinch
+        public virtual SteamVR_Action_Boolean SummonBall
         {
             get
             {
-                return SteamVR_Actions.default_GrabPinch;
+                return SteamVR_Actions.default_SummonBall;
             }
         }
         
-        public virtual SteamVR_Action_Boolean GrabGrip
+        public virtual SteamVR_Action_Boolean ToggleGlow
         {
             get
             {
-                return SteamVR_Actions.default_GrabGrip;
+                return SteamVR_Actions.default_ToggleGlow;
             }
         }
         
@@ -102,6 +94,30 @@ namespace Valve.VR
             get
             {
                 return SteamVR_Actions.default_SnapTurnRight;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean Sticky
+        {
+            get
+            {
+                return SteamVR_Actions.default_Sticky;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean Bounce
+        {
+            get
+            {
+                return SteamVR_Actions.default_Bounce;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean BallCamera
+        {
+            get
+            {
+                return SteamVR_Actions.default_BallCamera;
             }
         }
         

@@ -2,55 +2,57 @@
 using UnityEngine;
 using Valve.VR;
 
-[RequireComponent(typeof(Rigidbody))] 
-public class Teleport : MonoBehaviour
+namespace VRJam2020
 {
-    [SerializeField] private float fadeTime;
-    [SerializeField] private SteamVR_Action_Boolean teleportAction;
-    //TODO find out how to reference Player position / head position without assigning field.
-    [SerializeField] private Transform cameraRig;
-    [SerializeField] private Transform head;
-
-    private bool isTeleportable;
-    private bool isTeleporting;
-    void Update()
+    [RequireComponent(typeof(Rigidbody))]
+    public class Teleport : MonoBehaviour
     {
-        if (teleportAction.GetStateUp(SteamVR_Input_Sources.Any))
-            TeleportCameraRigToThis();
-    }
+        [SerializeField] private float fadeTime;
+        [SerializeField] private SteamVR_Action_Boolean teleportAction;
+        //TODO find out how to reference Player position / head position without assigning field.
+        [SerializeField] private Transform cameraRig;
+        [SerializeField] private Transform head;
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        //TODO discuss if more logic is required for teleportable objects otherwise use tag instead.
-        if (collision.gameObject.GetComponent<TeleportTarget>())
-            isTeleportable = true;
-        else
-            isTeleportable = false;
-    }
+        private bool isTeleportable;
+        private bool isTeleporting;
+        void Update()
+        {
+            if (teleportAction.GetStateUp(SteamVR_Input_Sources.Any))
+                TeleportCameraRigToThis();
+        }
 
-    //TODO better names?!
-    private void TeleportCameraRigToThis()
-    {
-        if (!isTeleportable || isTeleporting)
-            return;
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.GetComponent<TeleportTarget>())
+                isTeleportable = true;
+            else
+                isTeleportable = false;
+        }
 
-        Vector3 groundPosition = new Vector3(head.position.x, cameraRig.position.y, head.position.z);
-        Vector3 translateVector = transform.position - groundPosition;
+        //TODO better names?!
+        private void TeleportCameraRigToThis()
+        {
+            if (!isTeleportable || isTeleporting)
+                return;
 
-        StartCoroutine(MoveRig(cameraRig, translateVector));
-    }
+            Vector3 groundPosition = new Vector3(head.position.x, cameraRig.position.y, head.position.z);
+            Vector3 translateVector = transform.position - groundPosition;
 
-    private IEnumerator MoveRig(Transform cameraRig, Vector3 translation)
-    {
-        isTeleporting = true;
+            StartCoroutine(MoveRig(cameraRig, translateVector));
+        }
 
-        SteamVR_Fade.Start(Color.black, fadeTime, true);
+        private IEnumerator MoveRig(Transform cameraRig, Vector3 translation)
+        {
+            isTeleporting = true;
 
-        yield return new WaitForSeconds(fadeTime);
-        cameraRig.position += translation;
+            SteamVR_Fade.Start(Color.black, fadeTime, true);
 
-        SteamVR_Fade.Start(Color.clear, fadeTime, true);
+            yield return new WaitForSeconds(fadeTime);
+            cameraRig.position += translation;
 
-        isTeleporting = false;
-    }
+            SteamVR_Fade.Start(Color.clear, fadeTime, true);
+
+            isTeleporting = false;
+        }
+    } 
 }
