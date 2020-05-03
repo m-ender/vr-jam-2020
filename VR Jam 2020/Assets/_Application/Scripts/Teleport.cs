@@ -26,7 +26,6 @@ namespace VRJam2020
             if (toggleTeleport.GetStateUp(SteamVR_Input_Sources.Any) /* && ball is in hand*/)
             {
                 ballState.ControllableState = ControllableState.Teleport;
-                Debug.Log("Teleport Mode ON");
             }
 
         }
@@ -38,7 +37,6 @@ namespace VRJam2020
             {
                 TeleportCameraRigToThis();
                 ballState.ControllableState = ControllableState.Bounce;
-                Debug.Log("Bounce Mode ON");
             }
         }
 
