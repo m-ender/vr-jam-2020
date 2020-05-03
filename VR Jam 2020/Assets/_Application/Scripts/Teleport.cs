@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using Valve.VR;
 
@@ -24,7 +22,7 @@ public class Teleport : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //TODO discuss if more logic is required for teleportable objects otherwise use tag instead.
-        if (collision.gameObject.GetComponent("Teleportable") != null)
+        if (collision.gameObject.GetComponent<TeleportTarget>())
             isTeleportable = true;
         else
             isTeleportable = false;
