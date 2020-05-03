@@ -434,7 +434,22 @@ PrefabInstance:
     - target: {fileID: 291676418759579137, guid: 1a6c6cf1c3750c8469a115e8acb64291,
         type: 3}
       propertyPath: toggleTeleport.actionPath
-      value: /actions/default/in/ToggleGlow
+      value: /actions/default/in/Teleport
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419773332344410204, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: bounceColour.rgba
+      value: 11974327
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419773332344410204, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: teleportColour.rgba
+      value: 63231
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419773332344410204, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: stickyColour.rgba
+      value: 2679331
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
