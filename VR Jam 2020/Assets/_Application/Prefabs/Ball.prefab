@@ -110,7 +110,6 @@ GameObject:
   - component: {fileID: 114000012554025852}
   - component: {fileID: 1432296944}
   - component: {fileID: 291676418759579137}
-  - component: {fileID: 5428016062994547851}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -378,17 +377,3 @@ MonoBehaviour:
     needsReinit: 0
   cameraRig: {fileID: 0}
   head: {fileID: 0}
---- !u!114 &5428016062994547851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000012660339372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8d4cc6cf300b3e4bb1411c4e041030c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportAllowed: 1
-  overrideHoverLock: 1

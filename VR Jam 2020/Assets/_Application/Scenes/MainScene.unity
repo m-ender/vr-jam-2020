@@ -431,8 +431,12 @@ PrefabInstance:
       propertyPath: head
       value: 
       objectReference: {fileID: 90479585}
-    m_RemovedComponents:
-    - {fileID: 5428016062994547851, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
+    - target: {fileID: 291676418759579137, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: toggleTeleport.actionPath
+      value: /actions/default/in/ToggleGlow
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
 --- !u!1001 &1616794836
 PrefabInstance:

@@ -5,34 +5,47 @@ using Valve.VR;
 namespace VRJam2020
 {
     [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(BallState))]
     public class Teleport : MonoBehaviour
     {
         [SerializeField] private float fadeTime;
-        [SerializeField] private SteamVR_Action_Boolean teleportAction;
+        [SerializeField] private SteamVR_Action_Boolean toggleTeleport;
         //TODO find out how to reference Player position / head position without assigning field.
         [SerializeField] private Transform cameraRig;
         [SerializeField] private Transform head;
 
-        private bool isTeleportable;
         private bool isTeleporting;
-        void Update()
+        private BallState ballState;
+
+        private void Awake()
         {
-            if (teleportAction.GetStateUp(SteamVR_Input_Sources.Any))
-                TeleportCameraRigToThis();
+            ballState = GetComponent<BallState>();
+        }
+        private void Update()
+        {
+            if (toggleTeleport.GetStateUp(SteamVR_Input_Sources.Any) /* && ball is in hand*/)
+            {
+                ballState.ControllableState = ControllableState.Teleport;
+                Debug.Log("Teleport Mode ON");
+            }
+
         }
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.GetComponent<TeleportTarget>())
-                isTeleportable = true;
-            else
-                isTeleportable = false;
+            if (collision.gameObject.GetComponent<TeleportTarget>() 
+                && ballState.ControllableState == ControllableState.Teleport)
+            {
+                TeleportCameraRigToThis();
+                ballState.ControllableState = ControllableState.Bounce;
+                Debug.Log("Bounce Mode ON");
+            }
         }
 
         //TODO better names?!
         private void TeleportCameraRigToThis()
         {
-            if (!isTeleportable || isTeleporting)
+            if (isTeleporting)
                 return;
 
             Vector3 groundPosition = new Vector3(head.position.x, cameraRig.position.y, head.position.z);
