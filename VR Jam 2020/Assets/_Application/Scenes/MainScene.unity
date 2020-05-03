@@ -406,51 +406,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114000012133941026, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+    - target: {fileID: 291676418759579137, guid: 1a6c6cf1c3750c8469a115e8acb64291,
         type: 3}
-      propertyPath: catchingSpeedThreshold
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: cameraRig
+      value: 
+      objectReference: {fileID: 587243738}
+    - target: {fileID: 291676418759579137, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: head
+      value: 
+      objectReference: {fileID: 90479585}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
---- !u!1 &1532457726 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1000012660339372, guid: 1a6c6cf1c3750c8469a115e8acb64291,
-    type: 3}
-  m_PrefabInstance: {fileID: 1432296942}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1532457727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1532457726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8d4cc6cf300b3e4bb1411c4e041030c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportAllowed: 1
-  overrideHoverLock: 1
---- !u!114 &1532457728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1532457726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fe060bce4115214ca80e353d176d04b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeTime: 1
-  teleportAction:
-    actionPath: /actions/default/in/Teleport
-    needsReinit: 0
-  cameraRig: {fileID: 587243738}
-  head: {fileID: 90479585}
 --- !u!1001 &1616794836
 PrefabInstance:
   m_ObjectHideFlags: 0
