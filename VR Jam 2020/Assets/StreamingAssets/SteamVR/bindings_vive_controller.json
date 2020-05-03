@@ -124,7 +124,7 @@
                },
                "mode" : "dpad",
                "parameters" : {
-                  "deadzone_pct" : "90",
+                  "deadzone_pct" : "50",
                   "overlap_pct" : "15",
                   "sub_mode" : "click"
                },
@@ -150,7 +150,7 @@
                },
                "mode" : "dpad",
                "parameters" : {
-                  "deadzone_pct" : "90",
+                  "deadzone_pct" : "50",
                   "overlap_pct" : "15",
                   "sub_mode" : "click"
                },
@@ -248,7 +248,7 @@
    "category" : "steamvr_input",
    "controller_type" : "vive_controller",
    "description" : "",
-   "name" : "vive_controller",
+   "name" : "Saved VR Jam 2020 [Testing] configuration for Vive Controller",
    "options" : {},
    "simulated_actions" : []
 }

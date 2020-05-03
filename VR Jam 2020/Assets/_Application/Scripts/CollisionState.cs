@@ -1,6 +1,6 @@
 ﻿namespace VRJam2020
 {
-    public enum ControllableState
+    public enum CollisionState
     {
         Bounce,
         Teleport,
