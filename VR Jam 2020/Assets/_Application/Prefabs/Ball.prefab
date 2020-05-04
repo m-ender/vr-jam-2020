@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 2787686033388852304}
   - component: {fileID: 54000013480734818}
   - component: {fileID: 114000012872173436}
+  - component: {fileID: 202106357962506043}
   - component: {fileID: 114000012133941026}
   - component: {fileID: 114000013822852628}
   - component: {fileID: 114000012554025852}
@@ -234,6 +235,20 @@ MonoBehaviour:
   highlightOnHover: 0
   hideHighlight: []
   hoverPriority: 0
+--- !u!114 &202106357962506043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000012660339372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d02279d63e1f04e815a5d4bec48261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burningEffect: {fileID: 198371139109276902, guid: 08fd1b80cc24cc8439f45fda3c558255,
+    type: 3}
 --- !u!114 &114000012133941026
 MonoBehaviour:
   m_ObjectHideFlags: 0
