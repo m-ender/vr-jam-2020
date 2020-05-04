@@ -129,8 +129,8 @@ namespace VRJam2020
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.GetComponent<TeleportTarget>()
-                && ballState.CollisionState == CollisionState.Teleport)
+            if (ballState.CollisionState == CollisionState.Teleport
+                && collision.gameObject.GetComponent<TeleportTarget>())
             {
                 TeleportCameraRigToBall();
                 ballState.CollisionState = CollisionState.Bounce;
