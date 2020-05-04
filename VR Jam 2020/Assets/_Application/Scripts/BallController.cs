@@ -23,9 +23,6 @@ namespace VRJam2020
 
         private Transform targetHand;
 
-        //Empty game object assigned to parent of ball, so that parented objects scales don't affect ball.
-        private GameObject glue;
-
         private SteamVR_Input_Sources leftHandSource;
         private SteamVR_Input_Sources rightHandSource;
         private SteamVR_Input_Sources anyHandSource;
@@ -34,7 +31,6 @@ namespace VRJam2020
 
         private void Awake()
         {
-            glue = new GameObject("Glue");
             ballState = GetComponent<BallState>();
             rigidbody = GetComponent<Rigidbody>();
 
@@ -178,13 +174,15 @@ namespace VRJam2020
 
         private void StickOnCollision(Collision collision)
         {
+            //Empty game object assigned to parent of ball, so that parented objects don't scale the ball.
+            GameObject glue = new GameObject("Glue");
             glue.transform.SetParent(collision.transform);
             transform.SetParent(glue.transform);
             StopBall();
             rigidbody.isKinematic = true;
         }
 
-        private void Unstick()
+        public void Unstick()
         {
             transform.parent = null;
             rigidbody.isKinematic = false;

@@ -17,6 +17,12 @@ namespace VRJam2020
             isBurning = true;
             Instantiate(fire, gameObject.transform);
             yield return new WaitForSeconds(burningTime);
+
+            var ball = GetComponentInChildren<BallController>();
+
+            if (ball)
+                ball.Unstick();
+
             Destroy(gameObject);
         }
     }

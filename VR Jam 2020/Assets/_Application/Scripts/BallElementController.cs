@@ -15,13 +15,15 @@ namespace VRJam2020
             ballState = gameObject.GetComponent<BallState>();
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter(Collider other)
         {
-            if (collision.gameObject.GetComponent<FireSource>())
+            if (other.gameObject.GetComponent<FireSource>())
             {
                 StartCoroutine(SetElementEffect(ElementalState.Burning, burningEffect));
             }
-
+        }
+        private void OnCollisionEnter(Collision collision)
+        {
             //TODO refactor this to generalise to other elements.
             BurnFlammableObjects(collision);
         }
