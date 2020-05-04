@@ -23,6 +23,9 @@ namespace VRJam2020
 
         private Transform targetHand;
 
+        //Empty game object assigned to parent of ball, so that parented objects scales don't affect ball.
+        private GameObject glue;
+
         private SteamVR_Input_Sources leftHandSource;
         private SteamVR_Input_Sources rightHandSource;
         private SteamVR_Input_Sources anyHandSource;
@@ -31,6 +34,7 @@ namespace VRJam2020
 
         private void Awake()
         {
+            glue = new GameObject("Glue");
             ballState = GetComponent<BallState>();
             rigidbody = GetComponent<Rigidbody>();
 
@@ -100,6 +104,8 @@ namespace VRJam2020
 
         private void FlyTowardsHand()
         {
+            if (ballState.CollisionState == CollisionState.Sticky)
+                Unstick();
             rigidbody.velocity = (targetHand.position - transform.position).normalized * flyingSpeed;
         }
 
@@ -136,6 +142,12 @@ namespace VRJam2020
                 ballState.CollisionState = CollisionState.Bounce;
                 StopBall();
             }
+
+            //GetComponentInChildren couldn't detect the player component for some reason.
+
+            if (ballState.CollisionState == CollisionState.Sticky
+                && !collision.gameObject.transform.root.GetComponent<Player>())
+                StickOnCollision(collision);
         }
 
         private void StopBall()
@@ -164,6 +176,21 @@ namespace VRJam2020
             SteamVR_Fade.Start(Color.clear, fadeTime, true);
         }
 
+        private void StickOnCollision(Collision collision)
+        {
+            glue.transform.SetParent(collision.transform);
+            transform.SetParent(glue.transform);
+            StopBall();
+            rigidbody.isKinematic = true;
+        }
+
+        private void Unstick()
+        {
+            transform.parent = null;
+            rigidbody.isKinematic = false;
+            ballState.CollisionState = CollisionState.Bounce;
+        }
+        
         private void ActivateLeftHand()
         {
             activeHandSource = leftHandSource;
