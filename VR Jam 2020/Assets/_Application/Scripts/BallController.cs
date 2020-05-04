@@ -132,10 +132,36 @@ namespace VRJam2020
             if (ballState.CollisionState == CollisionState.Teleport
                 && collision.gameObject.GetComponent<TeleportTarget>())
             {
-                TeleportCameraRigToBall();
-                ballState.CollisionState = CollisionState.Bounce;
-                StopBall();
+                if (IsFloorCollision(collision))
+                {
+                    TeleportCameraRigToBall();
+                    ballState.CollisionState = CollisionState.Bounce;
+                    StopBall();
+                }
             }
+        }
+
+        // Based on http://answers.unity.com/answers/650322/view.html
+        private bool IsFloorCollision(Collision collision)
+        {
+            // find collision point and normal. You may want to average over all contacts
+            Vector3 point = collision.contacts[0].point;
+            Vector3 dir = -collision.contacts[0].normal; // you need vector pointing TOWARDS the collision, not away from it
+            // step back a bit
+            point -= dir;
+            // cast a ray twice as far as your step back. This seems to work in all
+            // situations, at least when speeds are not ridiculously big
+            if (collision.collider.Raycast(new Ray(point, dir), out RaycastHit hitInfo, 2))
+            {
+                // this is the collider surface normal
+                Vector3 normal = hitInfo.normal;
+
+                float angleToVertical = Vector3.Angle(Vector3.up, normal);
+
+                return angleToVertical < 5;
+            }
+
+            return false;
         }
 
         private void StopBall()
