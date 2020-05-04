@@ -411,6 +411,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 481700657}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &547817356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3152981892498309491, guid: 20fe9d71052c1ee40aa015ecac37e938,
+    type: 3}
+  m_PrefabInstance: {fileID: 3152981891955476223}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &587243738 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9,
@@ -1354,6 +1360,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1710810593, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710810595, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1000012660339372, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
       propertyPath: m_Name
       value: Ball
@@ -1427,6 +1441,11 @@ PrefabInstance:
       propertyPath: rightHand
       value: 
       objectReference: {fileID: 803489234}
+    - target: {fileID: 2787686033388852304, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: BallCamQuad
+      value: 
+      objectReference: {fileID: 547817356}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
 --- !u!1 &1547332993
@@ -1673,3 +1692,77 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3152981891955476223
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 90479585}
+    m_Modifications:
+    - target: {fileID: 3152981892498309490, guid: 20fe9d71052c1ee40aa015ecac37e938,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152981892498309490, guid: 20fe9d71052c1ee40aa015ecac37e938,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152981892498309490, guid: 20fe9d71052c1ee40aa015ecac37e938,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152981892498309490, guid: 20fe9d71052c1ee40aa015ecac37e938,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152981892498309490, guid: 20fe9d71052c1ee40aa015ecac37e938,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152981892498309490, guid: 20fe9d71052c1ee40aa015ecac37e938,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152981892498309490, guid: 20fe9d71052c1ee40aa015ecac37e938,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152981892498309490, guid: 20fe9d71052c1ee40aa015ecac37e938,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152981892498309490, guid: 20fe9d71052c1ee40aa015ecac37e938,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152981892498309490, guid: 20fe9d71052c1ee40aa015ecac37e938,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152981892498309490, guid: 20fe9d71052c1ee40aa015ecac37e938,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152981892498309491, guid: 20fe9d71052c1ee40aa015ecac37e938,
+        type: 3}
+      propertyPath: m_Name
+      value: BallCamQuad
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152981892498309491, guid: 20fe9d71052c1ee40aa015ecac37e938,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 20fe9d71052c1ee40aa015ecac37e938, type: 3}

@@ -14,6 +14,7 @@ namespace VRJam2020
         [SerializeField] private Transform head = null;
         [SerializeField] private Transform leftHand = null;
         [SerializeField] private Transform rightHand = null;
+        [SerializeField] private GameObject BallCamQuad = null;
 
         [SerializeField] private float flyingSpeed = 10;
         [SerializeField] private float fadeTime = 1;
@@ -28,6 +29,10 @@ namespace VRJam2020
         private SteamVR_Input_Sources anyHandSource;
         private SteamVR_Input_Sources activeHandSource;
         private SteamVR_Input_Sources inactiveHandSource;
+
+        private Transform activeHandTransform;
+
+        private bool isSpyMode;
 
         private void Awake()
         {
@@ -58,6 +63,12 @@ namespace VRJam2020
                 StartFlyingToLeftHand();
             else if (SteamVR_Actions.default_SummonBall.GetState(rightHandSource))
                 StartFlyingToRightHand();
+
+            if (SteamVR_Actions.default_BallCamera.GetStateDown(activeHandSource))
+                ActivateSpyMode();
+
+            if (SteamVR_Actions.default_BallCamera.GetStateUp(activeHandSource))
+                DeactivateSpyMode();
         }
 
         private void UpdateWhileFlying()
@@ -102,6 +113,10 @@ namespace VRJam2020
         {
             if (ballState.CollisionState == CollisionState.Sticky)
                 Unstick();
+
+            if (isSpyMode)
+                DeactivateSpyMode();
+
             rigidbody.velocity = (targetHand.position - transform.position).normalized * flyingSpeed;
         }
 
@@ -192,13 +207,33 @@ namespace VRJam2020
         private void ActivateLeftHand()
         {
             activeHandSource = leftHandSource;
+            activeHandTransform = leftHand;
             inactiveHandSource = rightHandSource;
         }
 
         private void ActivateRightHand()
         {
             activeHandSource = rightHandSource;
+            activeHandTransform = rightHand;
             inactiveHandSource = leftHandSource;
+        }
+
+        private void ActivateSpyMode()
+        {
+            isSpyMode = true;
+            BallCamQuad.SetActive(true);
+            var ballCam = GetComponentInChildren<BallCameraController>();
+            ballCam.gameObject.GetComponent<Camera>().enabled = true;
+            //transform.SetPositionAndRotation(ballCam.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            ballCam.targetTransform = activeHandTransform;
+        }
+
+        private void DeactivateSpyMode()
+        {
+            isSpyMode = false;
+            BallCamQuad.SetActive(false);
+            var ballCam = GetComponentInChildren<BallCameraController>();
+            ballCam.gameObject.GetComponent<Camera>().enabled = true;
         }
     } 
 }
