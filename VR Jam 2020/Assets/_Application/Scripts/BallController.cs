@@ -141,6 +141,7 @@ namespace VRJam2020
         private void StopBall()
         {
             rigidbody.velocity = Vector3.zero;
+            rigidbody.angularVelocity = Vector3.zero;
         }
 
         private void TeleportCameraRigToBall()
