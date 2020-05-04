@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
-using VRJam2020;
 
 namespace VRJam2020
 {
@@ -17,6 +14,7 @@ namespace VRJam2020
         {
             ballState = gameObject.GetComponent<BallState>();
         }
+
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.GetComponent<FireSource>())
@@ -47,11 +45,15 @@ namespace VRJam2020
 
         private void BurnFlammableObjects(Collision collision)
         {
-            if (collision.gameObject.GetComponent<Flammable>()
-                && ballState.ElementalState == ElementalState.Burning)
+            if (ballState.ElementalState == ElementalState.Burning)
             {
-                StartCoroutine(collision.gameObject.GetComponent<Flammable>().SetAlight());
-                RemoveElementEffect(burningEffect);
+                var flammable = collision.gameObject.GetComponent<Flammable>();
+
+                if (flammable)
+                {
+                    StartCoroutine(flammable.SetAlight());
+                    RemoveElementEffect(burningEffect);
+                }
             }
         }
     }

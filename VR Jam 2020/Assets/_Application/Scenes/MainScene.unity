@@ -1372,16 +1372,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 202106357962506043, guid: 1a6c6cf1c3750c8469a115e8acb64291,
         type: 3}
-      propertyPath: burningPrefab
-      value: 
-      objectReference: {fileID: 1362594287}
-    - target: {fileID: 202106357962506043, guid: 1a6c6cf1c3750c8469a115e8acb64291,
-        type: 3}
-      propertyPath: elementEffectTime
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 202106357962506043, guid: 1a6c6cf1c3750c8469a115e8acb64291,
-        type: 3}
       propertyPath: burningEffect
       value: 
       objectReference: {fileID: 1362594287}
@@ -1439,7 +1429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7874bbe2e64132340b11e343733ae4fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Fire: {fileID: 1725317912486240, guid: e55149ba6f4d00741984987e258c3378, type: 3}
+  fire: {fileID: 7646225972527324901, guid: 5a9812901b37e424a86423b0d4aea4f0, type: 3}
   burningTime: 5
 --- !u!65 &1547332995
 BoxCollider:

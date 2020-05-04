@@ -1,12 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace VRJam2020
 {
     public class Flammable : MonoBehaviour
     {
-        [SerializeField] private GameObject Fire;
+        [SerializeField] private GameObject fire;
         [SerializeField] private float burningTime;
 
         private bool isBurning;
@@ -16,11 +15,9 @@ namespace VRJam2020
                 yield break;
 
             isBurning = true;
-            Instantiate(Fire, gameObject.transform);
+            Instantiate(fire, gameObject.transform);
             yield return new WaitForSeconds(burningTime);
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }
-
-
