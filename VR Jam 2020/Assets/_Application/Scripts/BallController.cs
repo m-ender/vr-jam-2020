@@ -203,7 +203,24 @@ namespace VRJam2020
             rigidbody.isKinematic = false;
             ballState.CollisionState = CollisionState.Bounce;
         }
-        
+
+        private void ActivateSpyMode()
+        {
+            isSpyMode = true;
+            BallCamQuad.SetActive(true);
+            var ballCam = GetComponentInChildren<BallCameraController>();
+            ballCam.gameObject.GetComponent<Camera>().enabled = true;
+            ballCam.targetTransform = activeHandTransform;
+        }
+
+        private void DeactivateSpyMode()
+        {
+            isSpyMode = false;
+            BallCamQuad.SetActive(false);
+            var ballCam = GetComponentInChildren<BallCameraController>();
+            ballCam.gameObject.GetComponent<Camera>().enabled = false;
+        }
+
         private void ActivateLeftHand()
         {
             activeHandSource = leftHandSource;
@@ -216,24 +233,6 @@ namespace VRJam2020
             activeHandSource = rightHandSource;
             activeHandTransform = rightHand;
             inactiveHandSource = leftHandSource;
-        }
-
-        private void ActivateSpyMode()
-        {
-            isSpyMode = true;
-            BallCamQuad.SetActive(true);
-            var ballCam = GetComponentInChildren<BallCameraController>();
-            ballCam.gameObject.GetComponent<Camera>().enabled = true;
-            //transform.SetPositionAndRotation(ballCam.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-            ballCam.targetTransform = activeHandTransform;
-        }
-
-        private void DeactivateSpyMode()
-        {
-            isSpyMode = false;
-            BallCamQuad.SetActive(false);
-            var ballCam = GetComponentInChildren<BallCameraController>();
-            ballCam.gameObject.GetComponent<Camera>().enabled = true;
         }
     } 
 }
