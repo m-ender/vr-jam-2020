@@ -145,8 +145,9 @@ namespace VRJam2020
         private bool IsFloorCollision(Collision collision)
         {
             // find collision point and normal. You may want to average over all contacts
-            Vector3 point = collision.contacts[0].point;
-            Vector3 dir = -collision.contacts[0].normal; // you need vector pointing TOWARDS the collision, not away from it
+            ContactPoint contactPoint = collision.GetContact(0);
+            Vector3 point = contactPoint.point;
+            Vector3 dir = -contactPoint.normal; // you need vector pointing TOWARDS the collision, not away from it
             // step back a bit
             point -= dir;
             // cast a ray twice as far as your step back. This seems to work in all
@@ -158,7 +159,7 @@ namespace VRJam2020
 
                 float angleToVertical = Vector3.Angle(Vector3.up, normal);
 
-                return angleToVertical < 5;
+                return angleToVertical < 45;
             }
 
             return false;
