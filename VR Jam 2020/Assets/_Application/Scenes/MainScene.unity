@@ -1254,6 +1254,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1710810595, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 1000012660339372, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
       propertyPath: m_Name
       value: Ball
@@ -1301,6 +1305,16 @@ PrefabInstance:
     - target: {fileID: 4000010733554458, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54000013480734818, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 135000011102407900, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2787686033388852304, guid: 1a6c6cf1c3750c8469a115e8acb64291,
         type: 3}

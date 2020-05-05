@@ -30,8 +30,6 @@ namespace VRJam2020
         private SteamVR_Input_Sources activeHandSource;
         private SteamVR_Input_Sources inactiveHandSource;
 
-        private Transform activeHandTransform;
-
         private bool isSpyMode;
 
         private void Awake()
@@ -64,10 +62,10 @@ namespace VRJam2020
             else if (SteamVR_Actions.default_SummonBall.GetState(rightHandSource))
                 StartFlyingToRightHand();
 
-            if (SteamVR_Actions.default_BallCamera.GetStateDown(activeHandSource))
+            if (SteamVR_Actions.default_BallCamera.GetStateDown(anyHandSource) && !isSpyMode)
                 ActivateSpyMode();
 
-            if (SteamVR_Actions.default_BallCamera.GetStateUp(activeHandSource))
+            if (SteamVR_Actions.default_BallCamera.GetStateUp(anyHandSource))
                 DeactivateSpyMode();
         }
 
@@ -112,7 +110,10 @@ namespace VRJam2020
         private void FlyTowardsHand()
         {
             if (ballState.CollisionState == CollisionState.Sticky)
+            {
                 Unstick();
+                ballState.CollisionState = CollisionState.Bounce;
+            }
 
             if (isSpyMode)
                 DeactivateSpyMode();
@@ -122,6 +123,12 @@ namespace VRJam2020
 
         public void OnPickedUp()
         {
+            if (ballState.CollisionState == CollisionState.Sticky)
+                ballState.CollisionState = CollisionState.Bounce;
+
+            if (isSpyMode)
+                DeactivateSpyMode();
+
             switch (transform.parent.GetComponent<Hand>().handType)
             {
             case SteamVR_Input_Sources.LeftHand:
@@ -140,6 +147,8 @@ namespace VRJam2020
 
         public void OnLetGo()
         {
+            //forces an Unstick incase ball was picked up directly when sticky.
+            Unstick();
             ballState.BaseState = BaseState.Free;
             activeHandSource = anyHandSource;
         }
@@ -193,15 +202,14 @@ namespace VRJam2020
             GameObject glue = new GameObject("Glue");
             glue.transform.SetParent(collision.transform);
             transform.SetParent(glue.transform);
-            StopBall();
             rigidbody.isKinematic = true;
+            StopBall();
         }
 
         public void Unstick()
         {
             transform.parent = null;
             rigidbody.isKinematic = false;
-            ballState.CollisionState = CollisionState.Bounce;
         }
 
         private void ActivateSpyMode()
@@ -210,7 +218,7 @@ namespace VRJam2020
             BallCamQuad.SetActive(true);
             var ballCam = GetComponentInChildren<BallCameraController>();
             ballCam.gameObject.GetComponent<Camera>().enabled = true;
-            ballCam.targetTransform = activeHandTransform;
+            ballCam.targetTransform = head;
         }
 
         private void DeactivateSpyMode()
@@ -224,14 +232,12 @@ namespace VRJam2020
         private void ActivateLeftHand()
         {
             activeHandSource = leftHandSource;
-            activeHandTransform = leftHand;
             inactiveHandSource = rightHandSource;
         }
 
         private void ActivateRightHand()
         {
             activeHandSource = rightHandSource;
-            activeHandTransform = rightHand;
             inactiveHandSource = leftHandSource;
         }
     } 
