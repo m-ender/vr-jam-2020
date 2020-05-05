@@ -1368,6 +1368,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1710810595, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 1000012660339372, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
       propertyPath: m_Name
       value: Ball
@@ -1416,6 +1420,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23000011214558378, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ea4ac3bb8be0c064e83cdf3226bc3423, type: 2}
     - target: {fileID: 202106357962506043, guid: 1a6c6cf1c3750c8469a115e8acb64291,
         type: 3}
       propertyPath: burningEffect
@@ -1446,6 +1455,21 @@ PrefabInstance:
       propertyPath: BallCamQuad
       value: 
       objectReference: {fileID: 547817356}
+    - target: {fileID: 7419773332344410204, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: bounceMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: ea4ac3bb8be0c064e83cdf3226bc3423, type: 2}
+    - target: {fileID: 7419773332344410204, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: stickyMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 4f78837b57e1a6b4f9e972693d37e508, type: 2}
+    - target: {fileID: 7419773332344410204, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: teleportMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: cda191a31ed9b024cb9858476dbc439d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
 --- !u!1 &1547332993

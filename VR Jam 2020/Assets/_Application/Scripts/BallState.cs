@@ -7,9 +7,9 @@ namespace VRJam2020
         [SerializeField] private MeshRenderer ballRenderer = null;
 
         [SerializeField] private CollisionState initialControllableState = CollisionState.Bounce;
-        [SerializeField] private Color bounceColour = Color.white;
-        [SerializeField] private Color teleportColour = Color.white;
-        [SerializeField] private Color stickyColour = Color.white;
+        [SerializeField] private Material bounceMaterial = null;
+        [SerializeField] private Material teleportMaterial = null;
+        [SerializeField] private Material stickyMaterial = null;
 
         public BaseState BaseState { get; set; }
 
@@ -37,13 +37,13 @@ namespace VRJam2020
             switch (CollisionState)
             {
             case CollisionState.Bounce:
-                ballRenderer.material.color = bounceColour;
+                ballRenderer.material = bounceMaterial;
                 break;
             case CollisionState.Teleport:
-                ballRenderer.material.color = teleportColour;
+                ballRenderer.material = teleportMaterial;
                 break;
             case CollisionState.Sticky:
-                ballRenderer.material.color = stickyColour;
+                ballRenderer.material = stickyMaterial;
                 break;
             }
         }
