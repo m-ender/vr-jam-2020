@@ -8,6 +8,9 @@ namespace VRJam2020
     {
         [SerializeField] ParticleSystem burningEffect = null;
         [SerializeField] float elementEffectTime = 0;
+
+        private float effectTimeLeft = 0;
+
         private BallState ballState;
 
         private void Awake()
@@ -15,11 +18,20 @@ namespace VRJam2020
             ballState = gameObject.GetComponent<BallState>();
         }
 
+        private void Update()
+        {
+            effectTimeLeft -= Time.deltaTime;
+
+            if (effectTimeLeft < 0)
+                if (ballState.ElementalState == ElementalState.Burning)
+                    RemoveElementEffect(burningEffect);
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.GetComponent<FireSource>())
             {
-                StartCoroutine(SetElementEffect(ElementalState.Burning, burningEffect));
+                SetElementEffect(ElementalState.Burning, burningEffect);
             }
         }
         private void OnCollisionEnter(Collision collision)
@@ -28,15 +40,12 @@ namespace VRJam2020
             BurnFlammableObjects(collision);
         }
 
-        private IEnumerator SetElementEffect(ElementalState elementalState, ParticleSystem elementalEffect)
+        private void SetElementEffect(ElementalState elementalState, ParticleSystem elementalEffect)
         {
             ballState.ElementalState = elementalState;
             elementalEffect.Play();
 
-            yield return new WaitForSeconds(elementEffectTime);
-
-            if(ballState.ElementalState == elementalState)
-                RemoveElementEffect(burningEffect);
+            effectTimeLeft = elementEffectTime;
         }
 
         private void RemoveElementEffect(ParticleSystem elementEffect)
