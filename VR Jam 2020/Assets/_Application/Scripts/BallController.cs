@@ -31,6 +31,7 @@ namespace VRJam2020
         private SteamVR_Input_Sources inactiveHandSource;
 
         private bool isSpyMode;
+        private bool isGlowing;
 
         private void Awake()
         {
@@ -53,6 +54,10 @@ namespace VRJam2020
                 UpdateWhileFlying();
             else
                 UpdateWhileFree();
+
+            if (SteamVR_Actions.default_ToggleGlow.GetStateDown(anyHandSource))
+                ToggleGlow();
+
         }
 
         private void UpdateWhileFree()
@@ -241,6 +246,12 @@ namespace VRJam2020
         {
             activeHandSource = rightHandSource;
             inactiveHandSource = leftHandSource;
+        }
+
+        private void ToggleGlow()
+        {
+            Light light = GetComponent<Light>();
+            light.enabled = !light.enabled;
         }
     } 
 }
