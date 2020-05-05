@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace VRJam2020
 {
@@ -8,10 +6,9 @@ namespace VRJam2020
     {
         public Transform targetTransform;
 
-        // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            if(targetTransform)
+            if (targetTransform)
                 transform.rotation = targetTransform.rotation;
         }
     }

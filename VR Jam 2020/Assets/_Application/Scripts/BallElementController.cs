@@ -6,7 +6,7 @@ namespace VRJam2020
     [RequireComponent(typeof(BallState))]
     public class BallElementController : MonoBehaviour
     {
-        [SerializeField] GameObject burningEffect;
+        [SerializeField] ParticleSystem burningEffect;
         [SerializeField] float elementEffectTime;
         private BallState ballState;
 
@@ -28,10 +28,10 @@ namespace VRJam2020
             BurnFlammableObjects(collision);
         }
 
-        private IEnumerator SetElementEffect(ElementalState elementalState, GameObject elementalEffect)
+        private IEnumerator SetElementEffect(ElementalState elementalState, ParticleSystem elementalEffect)
         {
             ballState.ElementalState = elementalState;
-            elementalEffect.SetActive(true);
+            elementalEffect.Play();
 
             yield return new WaitForSeconds(elementEffectTime);
 
@@ -39,10 +39,10 @@ namespace VRJam2020
                 RemoveElementEffect(burningEffect);
         }
 
-        private void RemoveElementEffect(GameObject elementEffect)
+        private void RemoveElementEffect(ParticleSystem elementEffect)
         {
             ballState.ElementalState = ElementalState.None;
-            elementEffect.SetActive(false);
+            elementEffect.Stop();
         }
 
         private void BurnFlammableObjects(Collision collision)
