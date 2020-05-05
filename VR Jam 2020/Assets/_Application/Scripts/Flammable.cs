@@ -5,8 +5,8 @@ namespace VRJam2020
 {
     public class Flammable : MonoBehaviour
     {
-        [SerializeField] private GameObject fire;
-        [SerializeField] private float burningTime;
+        [SerializeField] private GameObject fire = null;
+        [SerializeField] private float burningTime = 0f;
 
         private bool isBurning;
         public IEnumerator SetAlight()

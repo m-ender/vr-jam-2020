@@ -6,8 +6,8 @@ namespace VRJam2020
     [RequireComponent(typeof(BallState))]
     public class BallElementController : MonoBehaviour
     {
-        [SerializeField] ParticleSystem burningEffect;
-        [SerializeField] float elementEffectTime;
+        [SerializeField] ParticleSystem burningEffect = null;
+        [SerializeField] float elementEffectTime = 0;
         private BallState ballState;
 
         private void Awake()

@@ -202,13 +202,15 @@ namespace VRJam2020
             GameObject glue = new GameObject("Glue");
             glue.transform.SetParent(collision.transform);
             transform.SetParent(glue.transform);
+            rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
             rigidbody.isKinematic = true;
-            StopBall();
+            
         }
 
         public void Unstick()
         {
             transform.parent = null;
+            rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
             rigidbody.isKinematic = false;
         }
 
