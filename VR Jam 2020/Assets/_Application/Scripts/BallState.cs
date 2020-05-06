@@ -1,15 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace VRJam2020
 {
     public class BallState : MonoBehaviour
     {
         [SerializeField] private MeshRenderer ballRenderer = null;
+        [SerializeField] private Light ballGlow = null;
 
         [SerializeField] private CollisionState initialControllableState = CollisionState.Bounce;
-        [SerializeField] private Color bounceColour = Color.white;
-        [SerializeField] private Color teleportColour = Color.white;
-        [SerializeField] private Color stickyColour = Color.white;
+        [SerializeField] private Material bounceMaterial = null;
+        [SerializeField] private Material teleportMaterial = null;
+        [SerializeField] private Material stickyMaterial = null;
 
         public BaseState BaseState { get; set; }
 
@@ -25,7 +27,17 @@ namespace VRJam2020
         }
 
         public ElementalState ElementalState { get; set; } = ElementalState.None;
-        public bool IsGlowing { get; set; } = false;
+        
+        private bool _isGlowing = false;
+        public bool IsGlowing
+        {
+            get => _isGlowing;
+            set
+            {
+                _isGlowing = value;
+                UpdateGlowEffect();
+            }
+        }
 
         private void Awake()
         {
@@ -37,15 +49,20 @@ namespace VRJam2020
             switch (CollisionState)
             {
             case CollisionState.Bounce:
-                ballRenderer.material.color = bounceColour;
+                ballRenderer.material = bounceMaterial;
                 break;
             case CollisionState.Teleport:
-                ballRenderer.material.color = teleportColour;
+                ballRenderer.material = teleportMaterial;
                 break;
             case CollisionState.Sticky:
-                ballRenderer.material.color = stickyColour;
+                ballRenderer.material = stickyMaterial;
                 break;
             }
+        }
+
+        private void UpdateGlowEffect()
+        {
+            ballGlow.enabled = IsGlowing;
         }
     }
 }
