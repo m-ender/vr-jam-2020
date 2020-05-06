@@ -15,8 +15,8 @@ namespace VRJam2020
         [SerializeField] float fadeDuration = 0;
 
         private TextMeshProUGUI popUpText = null;
-        private float timeLeft;
-        private string currentText;
+        private float lifeTimeLeft;
+        private string currentFullText;
 
         private Sequence s;
 
@@ -27,21 +27,15 @@ namespace VRJam2020
             DOTween.Init();
             
             s = DOTween.Sequence();
-            s.Append(DOTween.ToAlpha(() => popUpText.color, x => popUpText.color = x, 0.001f, fadeDuration));
-            s.AppendCallback(() =>
-            {
-                isFading = false;
-                popUpText.SetText("");
-            });
         }
 
         private void Update()
         {
-            timeLeft -= Time.deltaTime;
+            lifeTimeLeft -= Time.deltaTime;
 
-            if (timeLeft < 0)
+            if (lifeTimeLeft < 0)
             {
-                currentText = null;
+                currentFullText = null;
                 if(!isFading && popUpText.color.a > 0.002f)
                     FadeText();
             }
@@ -49,6 +43,7 @@ namespace VRJam2020
 
         private void FadeText()
         {
+            //Can't tween to 0 decimal places, so tween to near 0.
             isFading = true;
             s = DOTween.Sequence();
             s.Append(DOTween.ToAlpha(() => popUpText.color, x => popUpText.color = x, 0.001f, fadeDuration));
@@ -61,13 +56,12 @@ namespace VRJam2020
 
         public IEnumerator TypeText(string fullText)
         {
-            timeLeft = textLifeTime;
+            lifeTimeLeft = textLifeTime;
 
-            if (fullText == currentText)
+            if (fullText == currentFullText)
                 yield break;
 
-            currentText = fullText;
-
+            currentFullText = fullText;
 
             string typingText = "";
 
@@ -82,12 +76,12 @@ namespace VRJam2020
 
             foreach (char letter in fullText.ToCharArray())
             {
-                if (currentText != fullText)
+                if (currentFullText != fullText)
                     yield break;
                 typingText += letter;
                 popUpText.SetText(typingText);
                 yield return new WaitForSeconds(textDelay);
-                timeLeft = textLifeTime;
+                lifeTimeLeft = textLifeTime;
             }
         }
     }
