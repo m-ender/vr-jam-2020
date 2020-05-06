@@ -242,36 +242,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2951602602902006146, guid: afb4125951790294eb5ebf81b715b946,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.633
-      objectReference: {fileID: 0}
-    - target: {fileID: 2952834422586391470, guid: afb4125951790294eb5ebf81b715b946,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2953319911880944518, guid: afb4125951790294eb5ebf81b715b946,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2953779330292974036, guid: afb4125951790294eb5ebf81b715b946,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5879198127768282508, guid: afb4125951790294eb5ebf81b715b946,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5879198127969446031, guid: afb4125951790294eb5ebf81b715b946,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5879198128276085318, guid: afb4125951790294eb5ebf81b715b946,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -331,11 +301,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Torch_Wall Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 5879198128276375142, guid: afb4125951790294eb5ebf81b715b946,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afb4125951790294eb5ebf81b715b946, type: 3}
@@ -1510,38 +1475,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1364609985}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1370544301 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5879198128276375142, guid: afb4125951790294eb5ebf81b715b946,
-    type: 3}
-  m_PrefabInstance: {fileID: 197877769}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &1370544302
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1370544301}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.5
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 1}
---- !u!114 &1370544303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1370544301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 255da1413c43b2e40ba0913d478c2c6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1432296942
 PrefabInstance:
   m_ObjectHideFlags: 0
