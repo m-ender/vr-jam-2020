@@ -45,9 +45,6 @@ namespace VRJam2020
                 if(!isFading && popUpText.color.a > 0.002f)
                     FadeText();
             }
-
-            Debug.Log(popUpText.color.a);
-
         }
 
         private void FadeText()
