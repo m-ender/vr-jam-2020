@@ -23,6 +23,7 @@ namespace VRJam2020
             if (ball)
                 ball.Unstick();
 
+            gameObject.SetActive(false);
             Destroy(gameObject);
         }
     }
