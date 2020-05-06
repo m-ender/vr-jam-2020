@@ -260,6 +260,8 @@ MonoBehaviour:
   BallCamQuad: {fileID: 0}
   flyingSpeed: 10
   fadeTime: 1
+  hoveringAmplitude: 0.2
+  hoveringFrequency: 0.25
 --- !u!114 &202106357962506043
 MonoBehaviour:
   m_ObjectHideFlags: 0

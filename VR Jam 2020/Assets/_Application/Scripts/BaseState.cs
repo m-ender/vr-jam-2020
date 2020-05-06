@@ -7,6 +7,7 @@
         FlyingToRightHand,
         HeldInLeftHand,
         HeldInRightHand,
+        Hovering,
     }
 
     public static class BaseStateExtensionMethods

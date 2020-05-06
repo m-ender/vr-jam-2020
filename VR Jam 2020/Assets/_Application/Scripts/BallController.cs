@@ -20,6 +20,11 @@ namespace VRJam2020
         [SerializeField] private float flyingSpeed = 10;
         [SerializeField] private float fadeTime = 1;
 
+        [SerializeField] private float hoveringAmplitude;
+        [SerializeField] private float hoveringFrequency;
+
+        private Vector3 initialPosition;
+
         private BallState ballState;
         private new Rigidbody rigidbody;
 
@@ -45,7 +50,9 @@ namespace VRJam2020
 
             anyHandSource = SteamVR_Input_Sources.Any;
 
-            ballState.BaseState = BaseState.Free;
+            ballState.BaseState = BaseState.Hovering;
+            initialPosition = transform.localPosition;
+            rigidbody.isKinematic = true;
         }
 
         private void Update()
@@ -64,6 +71,12 @@ namespace VRJam2020
 
         private void UpdateWhileFree()
         {
+            if (ballState.BaseState == BaseState.Hovering)
+            {
+                float displacement = hoveringAmplitude * Mathf.Sin(Time.time * hoveringFrequency * 2 * Mathf.PI);
+                transform.localPosition = initialPosition + Vector3.up * displacement;
+            }
+
             if (SteamVR_Actions.default_SummonBall.GetState(leftHandSource))
                 StartFlyingToLeftHand();
             else if (SteamVR_Actions.default_SummonBall.GetState(rightHandSource))
