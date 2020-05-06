@@ -1,6 +1,4 @@
-﻿using DG.Tweening;
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 namespace VRJam2020
@@ -20,7 +18,6 @@ namespace VRJam2020
         [SerializeField] private float attackRange = 1.5f;
         [SerializeField] private float navGoalRefreshInterval = 0.5f;
         [SerializeField] private float attackInterval = 3f;
-        [SerializeField] private float rotationSpeed = 360f;
 
         private Transform goal;
         private NavMeshAgent navMeshAgent;
@@ -30,10 +27,14 @@ namespace VRJam2020
         private float lastNavGoalRefresh;
         private float lastAttack;
 
+        private LayerMask playerMask; // <_<
+
         private void Awake()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
             currentState = EnemyState.Idle;
+
+            playerMask = LayerMask.GetMask("Player");
         }
 
         private void Update()
@@ -77,6 +78,22 @@ namespace VRJam2020
         {
             goal = player;
             DetermineNextState();
+        }
+
+        public void TryToHitPlayer()
+        {
+            RaycastHit[] hits = Physics.RaycastAll(
+                transform.position + Vector3.up,
+                transform.forward,
+                attackRange,
+                playerMask);
+
+            foreach (RaycastHit hit in hits)
+            {
+                var playerHealth = hit.collider.GetComponent<PlayerHealth>();
+                if (playerHealth)
+                    playerHealth.TakeDamage(1);
+            }
         }
 
         private void DetermineNextState()
@@ -130,7 +147,7 @@ namespace VRJam2020
             Vector3 horizontalDirection = new Vector3(direction.x, 0, direction.z);
             float angle = Vector3.Angle(horizontalDirection, transform.forward);
             Quaternion lookRotation = Quaternion.LookRotation(horizontalDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, (Time.deltaTime * rotationSpeed) / angle);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, (Time.deltaTime * navMeshAgent.angularSpeed) / angle);
         }
     }
 }

@@ -179,7 +179,12 @@ namespace VRJam2020
                 }
             }
 
-            //GetComponentInChildren couldn't detect the player component for some reason.
+            if (ballState.CollisionState == CollisionState.Bounce)
+            {
+                var enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
+                if (enemyHealth)
+                    enemyHealth.TakeDamage(ballState.ElementalState == ElementalState.Burning ? 3 : 1);
+            }
 
             if (ballState.CollisionState == CollisionState.Sticky
                 && !collision.gameObject.transform.root.GetComponent<Player>())
