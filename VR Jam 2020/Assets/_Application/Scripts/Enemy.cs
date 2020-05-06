@@ -19,6 +19,8 @@ namespace VRJam2020
 
         [SerializeField] private float attackRange = 1.5f;
         [SerializeField] private float navGoalRefreshInterval = 0.5f;
+        [SerializeField] private float attackInterval = 3f;
+        [SerializeField] private float rotationSpeed = 360f;
 
         private Transform goal;
         private NavMeshAgent navMeshAgent;
@@ -26,6 +28,7 @@ namespace VRJam2020
         private EnemyState currentState;
 
         private float lastNavGoalRefresh;
+        private float lastAttack;
 
         private void Awake()
         {
@@ -50,12 +53,24 @@ namespace VRJam2020
 
         private void UpdateWhileFollowing()
         {
-
+            if (ReachedGoal())
+            {
+                animator.SetBool(AnimatorParameters.IsMoving, false);
+                BeginAttack();
+            }
+            else
+            {
+                if (Time.time > lastNavGoalRefresh + navGoalRefreshInterval)
+                    RefreshNavGoal();
+            }
         }
 
         private void UpdateWhileAttacking()
         {
-            throw new NotImplementedException();
+            RotateTowardsPlayer();
+
+            if (Time.time > lastAttack + attackInterval)
+                DetermineNextState();
         }
 
         public void DiscoverPlayer(Transform player)
@@ -93,15 +108,29 @@ namespace VRJam2020
         private void BeginAttack()
         {
             currentState = EnemyState.Attacking;
-            animator.SetTrigger(AnimatorParameters.IsAttacking);
+            Attack();
         }
 
-        private void Start()
+        private void Attack()
         {
-            DOTween.Sequence()
-                .AppendCallback(() => navMeshAgent.destination = goal.position)
-                .AppendInterval(0.5f)
-                .SetLoops(-1);
+            animator.SetTrigger(AnimatorParameters.IsAttacking);
+            lastAttack = Time.time;
+        }
+
+        private bool ReachedGoal()
+        {
+            return !navMeshAgent.pathPending
+                && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance
+                && (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f);
+        }
+
+        private void RotateTowardsPlayer()
+        {
+            Vector3 direction = (goal.position - transform.position).normalized;
+            Vector3 horizontalDirection = new Vector3(direction.x, 0, direction.z);
+            float angle = Vector3.Angle(horizontalDirection, transform.forward);
+            Quaternion lookRotation = Quaternion.LookRotation(horizontalDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, (Time.deltaTime * rotationSpeed) / angle);
         }
     }
 }
