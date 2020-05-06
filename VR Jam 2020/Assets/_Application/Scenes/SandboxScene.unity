@@ -2098,11 +2098,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BallCamQuad
       objectReference: {fileID: 0}
-    - target: {fileID: 3152981892498309491, guid: 20fe9d71052c1ee40aa015ecac37e938,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20fe9d71052c1ee40aa015ecac37e938, type: 3}
 --- !u!1001 &3435591861470418866
