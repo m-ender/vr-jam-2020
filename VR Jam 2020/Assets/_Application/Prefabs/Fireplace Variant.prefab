@@ -92,6 +92,11 @@ PrefabInstance:
       propertyPath: LightsModule.rangeCurve.scalar
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4406287025183244046, guid: 951534a2efd1c074abbe99e9e22b3135,
+        type: 3}
+      propertyPath: LightsModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4603016818792497466, guid: 951534a2efd1c074abbe99e9e22b3135,
         type: 3}
       propertyPath: m_Name

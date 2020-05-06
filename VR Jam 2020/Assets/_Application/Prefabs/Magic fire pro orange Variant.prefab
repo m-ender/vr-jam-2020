@@ -70,7 +70,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1725317912486240, guid: e55149ba6f4d00741984987e258c3378, type: 3}
       propertyPath: m_Name
-      value: Magic fire pro orange
+      value: Magic fire pro orange Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4274653050354540, guid: e55149ba6f4d00741984987e258c3378, type: 3}
       propertyPath: m_LocalPosition.x
@@ -131,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 198533276141313876, guid: e55149ba6f4d00741984987e258c3378,
         type: 3}
       propertyPath: LightsModule.enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198533276141313876, guid: e55149ba6f4d00741984987e258c3378,
         type: 3}
