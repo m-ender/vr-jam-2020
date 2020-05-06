@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
-using Valve.VR.InteractionSystem;
-using DG.Tweening;
+﻿using UnityEngine;
 
 namespace VRJam2020
 {
@@ -15,9 +10,8 @@ namespace VRJam2020
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.transform.root.GetComponent<Player>())
+            if (other.gameObject.transform.parent?.GetComponent<BallState>())
                 StartCoroutine(textManager.TypeText(popUpText));
         }
     }
 }
-

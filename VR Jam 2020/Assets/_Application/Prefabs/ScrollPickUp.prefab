@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3435591860068156568}
-  - component: {fileID: 3435591860068156570}
+  - component: {fileID: 905207452663255994}
   - component: {fileID: 3435591860068156571}
   m_Layer: 0
   m_Name: ScrollPickUp
@@ -34,8 +34,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -3.42, z: 0}
---- !u!136 &3435591860068156570
-CapsuleCollider:
+--- !u!135 &905207452663255994
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -44,9 +44,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
+  serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3435591860068156571
 MonoBehaviour:
@@ -60,6 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995adde44f72b5840a997e3c004e9682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grantedAbility: 0
 --- !u!1 &3435591860227878914
 GameObject:
   m_ObjectHideFlags: 0

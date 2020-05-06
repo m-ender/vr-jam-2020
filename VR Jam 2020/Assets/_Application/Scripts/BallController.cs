@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
@@ -22,6 +23,8 @@ namespace VRJam2020
         private BallState ballState;
         private new Rigidbody rigidbody;
 
+        private HashSet<BallAbilities> unlockedAbilities = new HashSet<BallAbilities>();
+
         private Transform targetHand;
 
         private SteamVR_Input_Sources leftHandSource;
@@ -31,7 +34,6 @@ namespace VRJam2020
         private SteamVR_Input_Sources inactiveHandSource;
 
         private bool isSpyMode;
-        private bool isGlowing;
 
         private void Awake()
         {
@@ -89,7 +91,8 @@ namespace VRJam2020
                 ballState.CollisionState = CollisionState.Bounce;
             else if (SteamVR_Actions.default_Teleport.GetStateDown(activeHandSource))
                 ballState.CollisionState = CollisionState.Teleport;
-            else if (SteamVR_Actions.default_Sticky.GetStateDown(activeHandSource))
+            else if (SteamVR_Actions.default_Sticky.GetStateDown(activeHandSource) 
+                && unlockedAbilities.Contains(BallAbilities.Sticky))
                 ballState.CollisionState = CollisionState.Sticky;
         }
 
@@ -158,6 +161,11 @@ namespace VRJam2020
             activeHandSource = anyHandSource;
         }
 
+        public void Unlock(BallAbilities grantedAbility)
+        {
+            unlockedAbilities.Add(grantedAbility);
+        }
+
         private void OnCollisionEnter(Collision collision)
         {
             if (ballState.CollisionState == CollisionState.Teleport
@@ -221,6 +229,9 @@ namespace VRJam2020
 
         private void ActivateSpyMode()
         {
+            if (!unlockedAbilities.Contains(BallAbilities.Spy))
+                return;
+
             isSpyMode = true;
             BallCamQuad.SetActive(true);
             var ballCam = GetComponentInChildren<BallCameraController>();
@@ -230,6 +241,9 @@ namespace VRJam2020
 
         private void DeactivateSpyMode()
         {
+            if (!unlockedAbilities.Contains(BallAbilities.Spy))
+                return;
+
             isSpyMode = false;
             BallCamQuad.SetActive(false);
             var ballCam = GetComponentInChildren<BallCameraController>();
@@ -250,8 +264,10 @@ namespace VRJam2020
 
         private void ToggleGlow()
         {
-            Light light = GetComponent<Light>();
-            light.enabled = !light.enabled;
+            if (!unlockedAbilities.Contains(BallAbilities.Glow))
+                return;
+
+            ballState.IsGlowing = !ballState.IsGlowing;
         }
     } 
 }

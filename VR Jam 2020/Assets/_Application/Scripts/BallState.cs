@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace VRJam2020
 {
     public class BallState : MonoBehaviour
     {
         [SerializeField] private MeshRenderer ballRenderer = null;
+        [SerializeField] private Light ballGlow = null;
 
         [SerializeField] private CollisionState initialControllableState = CollisionState.Bounce;
         [SerializeField] private Material bounceMaterial = null;
@@ -25,7 +27,17 @@ namespace VRJam2020
         }
 
         public ElementalState ElementalState { get; set; } = ElementalState.None;
-        public bool IsGlowing { get; set; } = false;
+        
+        private bool _isGlowing = false;
+        public bool IsGlowing
+        {
+            get => _isGlowing;
+            set
+            {
+                _isGlowing = value;
+                UpdateGlowEffect();
+            }
+        }
 
         private void Awake()
         {
@@ -46,6 +58,11 @@ namespace VRJam2020
                 ballRenderer.material = stickyMaterial;
                 break;
             }
+        }
+
+        private void UpdateGlowEffect()
+        {
+            ballGlow.enabled = IsGlowing;
         }
     }
 }
