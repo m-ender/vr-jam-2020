@@ -113,6 +113,7 @@ namespace VRJam2020
         {
             ballState.BaseState = BaseState.FlyingToLeftHand;
             targetHand = leftHand;
+            rigidbody.isKinematic = true;
             ActivateLeftHand();
         }
 
@@ -120,6 +121,7 @@ namespace VRJam2020
         {
             ballState.BaseState = BaseState.FlyingToRightHand;
             targetHand = rightHand;
+            rigidbody.isKinematic = true;
             ActivateRightHand();
         }
 
