@@ -385,6 +385,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2285705020779686178, guid: 3339a8719be1c3a4d9c74ffdf2403351,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2285705020779687645, guid: 3339a8719be1c3a4d9c74ffdf2403351,
         type: 3}
       propertyPath: textDelay
