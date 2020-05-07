@@ -2357,13 +2357,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 342542366}
+  - {fileID: 1486566742}
   - {fileID: 1247092475}
   - {fileID: 116794377}
   - {fileID: 1010894435}
   - {fileID: 1385541604}
   - {fileID: 1372504534}
   - {fileID: 893231207}
-  - {fileID: 1486566742}
   - {fileID: 1124452799}
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -21737,7 +21737,7 @@ MonoBehaviour:
   type: 0
   popUpText: Teleport Ability Unlocked!                                 With the
     ball in hand, press UP on the touchpad to activate.
-  displayTimeBeforeFade: 5
+  displayTimeBeforeFade: 10
   isDynamicallyTyped: 0
   singleUse: 1
   showBeforeAbilityUnlock: 0
@@ -36029,7 +36029,7 @@ Transform:
   - {fileID: 1167521188}
   - {fileID: 28526929}
   m_Father: {fileID: 65352528}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &1486566743
 MonoBehaviour:
@@ -39752,6 +39752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1770fed2d34ab4d4982c8fe5ac2413c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teleportTextTrigger: {fileID: 912446381}
 --- !u!4 &1649330569
 Transform:
   m_ObjectHideFlags: 0
@@ -40335,7 +40336,7 @@ PrefabInstance:
     - target: {fileID: 2338177044577405043, guid: ff6e891c3566dab4ab24d57f16192273,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.47
+      value: 4.31
       objectReference: {fileID: 0}
     - target: {fileID: 2338177044577405043, guid: ff6e891c3566dab4ab24d57f16192273,
         type: 3}

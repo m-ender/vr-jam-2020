@@ -1,12 +1,13 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace VRJam2020
 {
     public class SpawnMessage : MonoBehaviour
     {
+        [SerializeField] GameObject teleportTextTrigger = null;
         private TextManager textManager;
+
 
         private void Awake()
         {
@@ -17,15 +18,9 @@ namespace VRJam2020
 
         private IEnumerator writeTriggerHint()
         {
-            yield return new WaitForSeconds(25);
-            if(textManager.isFree)
-                textManager.ShowText(PopUpType.PlayerDialogue, "That ball seems to respond me pressing the TRIGGER", 10f);
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            yield return new WaitForSeconds(20);
+            if(teleportTextTrigger != null)
+                textManager.ShowText(PopUpType.PlayerDialogue, "Hmm... Maybe something happens if I hold the TRIGGER down. ", 10f);
         }
     }
 }

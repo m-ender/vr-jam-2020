@@ -12,8 +12,6 @@ namespace VRJam2020
         [SerializeField] private float textDelay = 0;
         [SerializeField] private float fadeDuration = 0;
 
-        public bool isFree { get; private set; }
-
         private TextMeshProUGUI popUpTextObject = null;
         private float lifeTimeLeft;
         private string currentFullText;
@@ -51,7 +49,6 @@ namespace VRJam2020
             {
                 isFading = false;
                 popUpTextObject.SetText("");
-                isFree = true;
             });
         }
 
@@ -63,8 +60,6 @@ namespace VRJam2020
         public void ShowText(PopUpType type, string fullText, float displayTime)
         {
             EndCurrentFades();
-
-            isFree = false;
             
             Sequence showText = DOTween.Sequence();
             showText.Append(DOTween.ToAlpha(() => popUpTextObject.color, x => popUpTextObject.color = x, 1, 0));
@@ -81,8 +76,6 @@ namespace VRJam2020
 
         private IEnumerator typeText(PopUpType type,string fullText, float displayTime)
         {
-            isFree = false;
-
             lifeTimeLeft = displayTime;
 
             if (fullText == currentFullText)
