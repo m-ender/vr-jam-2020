@@ -104,6 +104,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 3
   currentHealth: 0
+  damageHighlightColor: {r: 1, g: 0, b: 0, a: 0.2509804}
+  damageHighlightTime: 0.3
 --- !u!1 &585705714
 GameObject:
   m_ObjectHideFlags: 0

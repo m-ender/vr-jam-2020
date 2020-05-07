@@ -94,7 +94,7 @@ MonoBehaviour:
   initialHealth: 3
   currentHealth: 0
   modelRenderer: {fileID: 1497241928253600956}
-  damageHighlightColor: {r: 1, g: 0, b: 0, a: 0}
+  damageHighlightColor: {r: 1, g: 0, b: 0, a: 1}
   damageHighlightTime: 0.2
 --- !u!195 &4074759905308440736
 NavMeshAgent:
