@@ -93,6 +93,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 3
   currentHealth: 0
+  modelRenderer: {fileID: 1497241928253600956}
+  damageHighlightColor: {r: 1, g: 0, b: 0, a: 0}
+  damageHighlightTime: 0.2
 --- !u!195 &4074759905308440736
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -543,6 +546,12 @@ Transform:
 --- !u!95 &1497241928249477756 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9500000, guid: ba24e610e0a338545b447ff44a3cf1cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1497241928258912028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1497241928253600956 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 13700000, guid: ba24e610e0a338545b447ff44a3cf1cc,
     type: 3}
   m_PrefabInstance: {fileID: 1497241928258912028}
   m_PrefabAsset: {fileID: 0}
