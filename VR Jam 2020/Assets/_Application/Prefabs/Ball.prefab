@@ -358,7 +358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentFlags: 45
   attachmentOffset: {fileID: 0}
-  catchingSpeedThreshold: 1
+  catchingSpeedThreshold: 0
   releaseVelocityStyle: 1
   releaseVelocityTimeOffset: -0.011
   scaleReleaseVelocity: 1.1
