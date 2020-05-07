@@ -12,6 +12,7 @@ namespace VRJam2020
 			Vector3 pos = transform.position;
 			pos.y = reference.position.y;
 			transform.position = pos;
+			transform.rotation = Quaternion.identity;
 		}
 	}
 }

@@ -128,6 +128,8 @@ namespace VRJam2020
         private void StopFlying()
         {
             ballState.BaseState = BaseState.Free;
+            rigidbody.isKinematic = false;
+            rigidbody.velocity = (targetHand.position - transform.position).normalized * flyingSpeed;
         }
 
         private void FlyTowardsHand()
@@ -141,7 +143,10 @@ namespace VRJam2020
             if (isSpyMode)
                 DeactivateSpyMode();
 
-            rigidbody.velocity = (targetHand.position - transform.position).normalized * flyingSpeed;
+            Vector3 vectorToHand = targetHand.position - transform.position;
+            float distance = Mathf.Min(flyingSpeed * Time.deltaTime, vectorToHand.magnitude);
+
+            transform.position += vectorToHand.normalized * distance;
         }
 
         public void OnPickedUp()
