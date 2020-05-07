@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace VRJam2020
 {
     [RequireComponent(typeof(Collider))]
-    public class TextTrigger : MonoBehaviour
+    public class TextTriggerNoTeleport : MonoBehaviour
     {
         [SerializeField] private PopUpType type = PopUpType.PlayerDialogue;
         [SerializeField] private string popUpText = null;
         [SerializeField] private float displayTimeBeforeFade = 0;
         [SerializeField] private bool isDynamicallyTyped = false;
         [SerializeField] private bool singleUse = false;
-        [SerializeField] private bool abilityDependant = false;
+        [SerializeField] private bool showBeforeAbilityUnlock = false;
         [SerializeField] private BallAbilities ability = BallAbilities.Glow;
 
         private TextManager textManager;
@@ -22,10 +23,9 @@ namespace VRJam2020
         }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.transform.parent?.GetComponent<BallState>() 
-                && other.gameObject.transform.parent.GetComponent<BallState>().CollisionState == CollisionState.Teleport)
+            if (other.gameObject.transform.parent?.GetComponent<BallState>())
             {
-                if (abilityDependant)
+                if (showBeforeAbilityUnlock)
                 {
                     if (!ball.unlockedAbilities.Contains(ability))
                         TypeOrShowText();

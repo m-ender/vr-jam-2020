@@ -28,7 +28,7 @@ namespace VRJam2020
         private BallState ballState;
         private new Rigidbody rigidbody;
 
-        private HashSet<BallAbilities> unlockedAbilities = new HashSet<BallAbilities>();
+        public HashSet<BallAbilities> unlockedAbilities { get; private set; } = new HashSet<BallAbilities>();
 
         private Transform targetHand;
 
