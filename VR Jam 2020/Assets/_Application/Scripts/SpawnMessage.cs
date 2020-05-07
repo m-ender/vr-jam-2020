@@ -18,9 +18,9 @@ namespace VRJam2020
 
         private IEnumerator writeTriggerHint()
         {
-            yield return new WaitForSeconds(20);
+            yield return new WaitForSeconds(10);
             if(teleportTextTrigger != null)
-                textManager.ShowText(PopUpType.PlayerDialogue, "Hmm... Maybe something happens if I hold the TRIGGER down. ", 10f);
+                textManager.ShowText(PopUpType.PlayerDialogue, "Grab and hold to summon the orb.", 10f);
         }
     }
 }
