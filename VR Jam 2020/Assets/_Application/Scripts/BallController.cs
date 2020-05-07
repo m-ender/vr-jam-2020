@@ -1,7 +1,9 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
@@ -16,6 +18,7 @@ namespace VRJam2020
         [SerializeField] private Transform leftHand = null;
         [SerializeField] private Transform rightHand = null;
         [SerializeField] private GameObject BallCamQuad = null;
+        [SerializeField] private Image solidColorOverlay = null;
 
         [SerializeField] private float flyingSpeed = 10;
         [SerializeField] private float fadeTime = 1;
@@ -275,19 +278,10 @@ namespace VRJam2020
             Vector3 groundPosition = new Vector3(head.position.x, cameraRig.position.y, head.position.z);
             Vector3 translateVector = transform.position - groundPosition;
 
-            StartCoroutine(MoveRig(cameraRig, cameraRig.position + translateVector));
-        }
-
-        // TODO: This method should probably live somewhere on the camera rig.
-        private IEnumerator MoveRig(Transform cameraRig, Vector3 targetPosition)
-        {
-            SteamVR_Fade.Start(Color.black, fadeTime, true);
-
-            yield return new WaitForSeconds(fadeTime);
-
-            cameraRig.position = targetPosition;
-
-            SteamVR_Fade.Start(Color.clear, fadeTime, true);
+            DOTween.Sequence()
+                .Append(solidColorOverlay.DOColor(Color.black, fadeTime))
+                .AppendCallback(() => cameraRig.position += translateVector)
+                .Append(solidColorOverlay.DOColor(Color.clear, fadeTime));
         }
 
         private void StickOnCollision(Collision collision)

@@ -322,6 +322,11 @@ PrefabInstance:
       propertyPath: BallCamQuad
       value: 
       objectReference: {fileID: 170642427}
+    - target: {fileID: 2787686033388852304, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: solidColorOverlay
+      value: 
+      objectReference: {fileID: 1544249155}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
 --- !u!1 &941132105
@@ -377,5 +382,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3940eb6401ab52a4f82602342a971475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1544249155 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1430200344199389552, guid: b13f86dc6d95023409bff59206506881,
+    type: 3}
+  m_PrefabInstance: {fileID: 170642426}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
