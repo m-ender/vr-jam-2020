@@ -439,6 +439,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5053118124883099027}
     m_Modifications:
+    - target: {fileID: 58966503743737733, guid: 3339a8719be1c3a4d9c74ffdf2403351,
+        type: 3}
+      propertyPath: m_TagString
+      value: SolidColorOverlay
+      objectReference: {fileID: 0}
     - target: {fileID: 2285705021647675265, guid: 3339a8719be1c3a4d9c74ffdf2403351,
         type: 3}
       propertyPath: m_Name

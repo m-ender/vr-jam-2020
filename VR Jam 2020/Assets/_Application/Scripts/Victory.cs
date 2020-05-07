@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace VRJam2020
 {
@@ -9,10 +10,14 @@ namespace VRJam2020
         [SerializeField] private float successScreenDuration;
 
         private TextManager textManager;
+        private Image solidColorOverlay;
+        private GameObject playerRoot;
         
         private void Awake()
         {
             textManager = FindObjectOfType<TextManager>();
+            solidColorOverlay = GameObject.FindWithTag("SolidColorOverlay").GetComponent<Image>();
+            playerRoot = GameObject.FindWithTag("Player");
         }
 
         private void OnTriggerEnter(Collider other)
@@ -20,13 +25,14 @@ namespace VRJam2020
             BallState ballState = other.GetComponentInParent<BallState>();
             if (ballState && ballState.CollisionState == CollisionState.Teleport)
             {
-                textManager.ShowText(PopUpType.Alert, "You beat the game! Can you find any other paths through the castle?", successScreenDuration);
-                // Restart game (i.e. load main scene) after timer
-
-                GameObject playerRoot = transform.root.gameObject;
-
                 DOTween.Sequence()
-                    .InsertCallback(successScreenDuration, () => {
+                    .AppendInterval(10f)
+                    .AppendCallback(() => {
+                        solidColorOverlay.DOColor(Color.black, 1f);
+                        textManager.ShowText(PopUpType.Alert, "You beat the game! Can you find any other paths through the castle?", successScreenDuration);
+                    })
+                    .AppendInterval(successScreenDuration)
+                    .AppendCallback(() => {
                         Destroy(playerRoot);
                         SceneManager.LoadScene("MainScene");
                     });
