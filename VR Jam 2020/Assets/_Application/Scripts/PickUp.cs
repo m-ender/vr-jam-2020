@@ -4,7 +4,7 @@ namespace VRJam2020
 {
     public class PickUp : MonoBehaviour
     {
-        [SerializeField] private BallAbilities grantedAbility;
+        [SerializeField] private BallAbilities grantedAbility = BallAbilities.Spy;
 
         private void OnTriggerEnter(Collider other)
         {

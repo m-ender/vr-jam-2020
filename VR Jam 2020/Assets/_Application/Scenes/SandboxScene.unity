@@ -227,7 +227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef39e43d486017a4baa6276658a96843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popUpText: This is a sample text.
+  type: 1
+  popUpText: This is a Test
   textManager: {fileID: 1587997694}
 --- !u!4 &90479585 stripped
 Transform:
@@ -1239,7 +1240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef39e43d486017a4baa6276658a96843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popUpText: Other Sample Text.
+  type: 0
+  popUpText: '*This is another Test*'
   textManager: {fileID: 1587997694}
 --- !u!65 &1321280114
 BoxCollider:
@@ -1914,6 +1916,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2285705020779687646, guid: 3339a8719be1c3a4d9c74ffdf2403351,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2285705021647675265, guid: 3339a8719be1c3a4d9c74ffdf2403351,
         type: 3}
       propertyPath: m_Name

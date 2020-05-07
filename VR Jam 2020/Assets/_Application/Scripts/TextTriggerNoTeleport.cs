@@ -4,7 +4,7 @@ using UnityEngine.UI;
 namespace VRJam2020
 {
     [RequireComponent(typeof(Collider))]
-    public class TextTrigger : MonoBehaviour
+    public class TextTriggerNoTeleport : MonoBehaviour
     {
         [SerializeField] private PopUpType type = PopUpType.PlayerDialogue;
         [SerializeField] private string popUpText = null;
@@ -12,7 +12,7 @@ namespace VRJam2020
         [SerializeField] private bool isDynamicallyTyped = false;
         [SerializeField] private bool singleUse = false;
         [SerializeField] private bool showBeforeAbilityUnlock = false;
-        [SerializeField] private BallAbilities ability;
+        [SerializeField] private BallAbilities ability = BallAbilities.Glow;
 
         private TextManager textManager;
         private BallController ball;
@@ -23,8 +23,7 @@ namespace VRJam2020
         }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.transform.parent?.GetComponent<BallState>() 
-                && other.gameObject.transform.parent.GetComponent<BallState>().CollisionState == CollisionState.Teleport)
+            if (other.gameObject.transform.parent?.GetComponent<BallState>())
             {
                 if (showBeforeAbilityUnlock)
                 {
