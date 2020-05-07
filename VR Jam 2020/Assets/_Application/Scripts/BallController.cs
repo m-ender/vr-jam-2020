@@ -195,7 +195,7 @@ namespace VRJam2020
                 {
                     TeleportCameraRigToBall();
                     ballState.CollisionState = CollisionState.Bounce;
-                    StopBall();
+                    StopBall(collision);
                 }
             }
 
@@ -235,8 +235,37 @@ namespace VRJam2020
             return false;
         }
 
-        private void StopBall()
+        private Vector3 getTrueCollisionPoint(Collision collision)
         {
+            // find collision point and normal. You may want to average over all contacts
+            ContactPoint contactPoint = collision.GetContact(0);
+            Vector3 point = contactPoint.point;
+            Vector3 dir = -contactPoint.normal; // you need vector pointing TOWARDS the collision, not away from it
+            // step back a bit
+            point -= dir;
+
+            SphereCollider sphere = gameObject.GetComponentInChildren<SphereCollider>();
+            Vector3 relativeBallPos = new Vector3();
+
+            float ballRadius = sphere.transform.localScale.x * sphere.radius;
+
+            // cast a ray twice as far as your step back. This seems to work in all
+            // situations, at least when speeds are not ridiculously big
+            if (collision.collider.Raycast(new Ray(point, dir), out RaycastHit hitInfo, 2))
+            {
+                // this is the collider surface normal
+                Vector3 normal = hitInfo.normal;
+                relativeBallPos = normal.normalized * ballRadius;
+
+            }
+
+                return (contactPoint.point + relativeBallPos);
+        }
+
+
+        private void StopBall(Collision collision)
+        {
+            transform.position = getTrueCollisionPoint(collision);
             rigidbody.velocity = Vector3.zero;
             rigidbody.angularVelocity = Vector3.zero;
         }
@@ -264,11 +293,13 @@ namespace VRJam2020
         private void StickOnCollision(Collision collision)
         {
             //Empty game object assigned to parent of ball, so that parented objects don't scale the ball.
+            StopBall(collision);
             GameObject glue = new GameObject("Glue");
             glue.transform.SetParent(collision.transform);
             transform.SetParent(glue.transform);
             rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
             rigidbody.isKinematic = true;
+
             
         }
 
