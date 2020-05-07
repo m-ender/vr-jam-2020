@@ -11,7 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Application/Scenes/LevelGeometry.unity
     guid: 7d546e2c029d67a4d8cca06913f7f982
-  - enabled: 1
-    path: Assets/_Application/Scenes/Kitchen.unity
-    guid: ff64d610a6e1fa148b3c9ebfaf6b04ca
   m_configObjects: {}
