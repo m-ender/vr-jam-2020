@@ -477,6 +477,11 @@ PrefabInstance:
       propertyPath: showBeforeAbilityUnlock
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2338177044577405042, guid: ff6e891c3566dab4ab24d57f16192273,
+        type: 3}
+      propertyPath: abilityDependant
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2338177044577405043, guid: ff6e891c3566dab4ab24d57f16192273,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23596,6 +23601,11 @@ PrefabInstance:
     - target: {fileID: 2338177044577405042, guid: ff6e891c3566dab4ab24d57f16192273,
         type: 3}
       propertyPath: showBeforeAbilityUnlock
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2338177044577405042, guid: ff6e891c3566dab4ab24d57f16192273,
+        type: 3}
+      propertyPath: abilityDependant
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2338177044577405043, guid: ff6e891c3566dab4ab24d57f16192273,

@@ -11,8 +11,8 @@ namespace VRJam2020
         [SerializeField] private float displayTimeBeforeFade = 0;
         [SerializeField] private bool isDynamicallyTyped = false;
         [SerializeField] private bool singleUse = false;
-        [SerializeField] private bool showBeforeAbilityUnlock = false;
-        [SerializeField] private BallAbilities ability;
+        [SerializeField] private bool abilityDependant = false;
+        [SerializeField] private BallAbilities ability = BallAbilities.Glow;
 
         private TextManager textManager;
         private BallController ball;
@@ -26,7 +26,7 @@ namespace VRJam2020
             if (other.gameObject.transform.parent?.GetComponent<BallState>() 
                 && other.gameObject.transform.parent.GetComponent<BallState>().CollisionState == CollisionState.Teleport)
             {
-                if (showBeforeAbilityUnlock)
+                if (abilityDependant)
                 {
                     if (!ball.unlockedAbilities.Contains(ability))
                         TypeOrShowText();
