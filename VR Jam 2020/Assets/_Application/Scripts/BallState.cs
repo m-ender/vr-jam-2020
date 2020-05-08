@@ -63,12 +63,14 @@ namespace VRJam2020
 
             if (IsGlowing)
             {
+                ballRenderer.material.EnableKeyword("_EMISSION");
+
                 if (CollisionState == CollisionState.Teleport)
                     ballRenderer.material.SetColor("_EmissionColor", new Color(0, 0.7490196f, 0.8117647f)*4);
                 if (CollisionState == CollisionState.Sticky)
                     ballRenderer.material.SetColor("_EmissionColor", new Color(0.06517824f, 0.28f, 0.079f)*2);
                 if (CollisionState == CollisionState.Bounce)
-                    ballRenderer.material.SetColor("_EmissionColor", new Color(0.6f, 0.6f, 0.6f)*2);
+                    ballRenderer.material.SetColor("_EmissionColor", new Color(0.6f, 0.6f, 0.6f));
             }
             else
             {

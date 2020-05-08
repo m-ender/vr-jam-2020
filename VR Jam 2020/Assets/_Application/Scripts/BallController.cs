@@ -30,7 +30,7 @@ namespace VRJam2020
         private BallState ballState;
         private new Rigidbody rigidbody;
 
-        public HashSet<BallAbilities> unlockedAbilities { get; private set; } = new HashSet<BallAbilities>();
+        public HashSet<BallAbilities> unlockedAbilities { get; private set; } = new HashSet<BallAbilities>() { BallAbilities.Glow };
 
         private Transform targetHand;
 
@@ -345,12 +345,14 @@ namespace VRJam2020
             
             if(ballState.IsGlowing)
             {
+                ballMaterial.EnableKeyword("_EMISSION");
+
                 if (ballState.CollisionState == CollisionState.Teleport)
                     ballMaterial.SetColor("_EmissionColor", new Color(0, 0.7490196f, 0.8117647f)*4);
                 if (ballState.CollisionState == CollisionState.Sticky)
                     ballMaterial.SetColor("_EmissionColor", new Color(0.06517824f, 0.28f, 0.079f)*2);
                 if (ballState.CollisionState == CollisionState.Bounce)
-                    ballMaterial.SetColor("_EmissionColor", new Color(0.6f, 0.6f, 0.6f)*2);
+                    ballMaterial.SetColor("_EmissionColor", new Color(0.6f, 0.6f, 0.6f));
             }
             else
             {
