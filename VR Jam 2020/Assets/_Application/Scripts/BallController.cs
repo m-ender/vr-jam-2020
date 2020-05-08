@@ -30,7 +30,7 @@ namespace VRJam2020
         private BallState ballState;
         private new Rigidbody rigidbody;
 
-        public HashSet<BallAbilities> unlockedAbilities { get; private set; } = new HashSet<BallAbilities>() { BallAbilities.Glow };
+        public HashSet<BallAbilities> unlockedAbilities { get; private set; } = new HashSet<BallAbilities>();
 
         private Transform targetHand;
 
