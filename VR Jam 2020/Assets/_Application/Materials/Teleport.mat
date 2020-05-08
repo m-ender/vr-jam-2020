@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Teleport
   m_Shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP
+  m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _SPECGLOSSMAP
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 31a81610aba97a948b33ac6481d66c25, type: 3}
+        m_Texture: {fileID: 2800000, guid: aa701b1f3ae438e469d0ad4f122a0633, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -56,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 34052ff677e1e0040bfdde61332fac2e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -78,5 +78,5 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0, g: 0.9820709, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0.7504719, b: 0.8113208, a: 1}
+    - _EmissionColor: {r: 0, g: 0.7490196, b: 0.8117647, a: 1}
     - _SpecColor: {r: 0, g: 0.8993242, b: 1, a: 1}

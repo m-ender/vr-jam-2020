@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using Valve.VR;
@@ -19,6 +20,7 @@ namespace VRJam2020
         [SerializeField] private Transform rightHand = null;
         [SerializeField] private GameObject BallCamQuad = null;
         [SerializeField] private Image solidColorOverlay = null;
+        [SerializeField] private Renderer ballRenderer = null;
 
         [SerializeField] private float flyingSpeed = 10;
         [SerializeField] private float fadeTime = 1;
@@ -345,6 +347,29 @@ namespace VRJam2020
                 return;
 
             ballState.IsGlowing = !ballState.IsGlowing;
+
+            Material ballMaterial = ballRenderer.material;
+            
+            if(ballState.IsGlowing)
+            {
+                if (ballState.CollisionState == CollisionState.Teleport)
+                    ballMaterial.SetColor("_EmissionColor", new Color(0, 0.7490196f, 0.8117647f)*4);
+                if (ballState.CollisionState == CollisionState.Sticky)
+                    ballMaterial.SetColor("_EmissionColor", new Color(0.06517824f, 0.28f, 0.079f)*2);
+                if (ballState.CollisionState == CollisionState.Bounce)
+                    ballMaterial.SetColor("_EmissionColor", new Color(0.6f, 0.6f, 0.6f)*2);
+            }
+            else
+            {
+                if (ballState.CollisionState == CollisionState.Teleport)
+                    ballMaterial.SetColor("_EmissionColor", new Color(0, 0.7490196f, 0.8117647f, 0f));
+                if (ballState.CollisionState == CollisionState.Sticky)
+                    ballMaterial.SetColor("_EmissionColor", new Color(0.06517824f, 0.28f, 0.079f));
+                if (ballState.CollisionState == CollisionState.Bounce)
+                    ballMaterial.SetColor("_EmissionColor", new Color(0f, 0f, 0f, 0f)*1);
+            }
+
+
         }
     } 
 }

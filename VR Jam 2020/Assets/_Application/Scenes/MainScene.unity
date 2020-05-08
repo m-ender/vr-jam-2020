@@ -410,8 +410,54 @@ PrefabInstance:
       propertyPath: solidColorOverlay
       value: 
       objectReference: {fileID: 1544249155}
+    - target: {fileID: 2787686033388852304, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: ballRenderer
+      value: 
+      objectReference: {fileID: 201711750}
+    - target: {fileID: 3104653810821758801, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104653810821758801, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104653810821758801, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104653810821758801, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104653810821758801, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093740740117365737, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: moveWithCustomTransform
+      value: 
+      objectReference: {fileID: 170642430}
+    - target: {fileID: 4093740740117365737, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
+--- !u!23 &201711750 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 23000011214558378, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+    type: 3}
+  m_PrefabInstance: {fileID: 201711749}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &941132105
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ namespace VRJam2020
         [SerializeField] private Material bounceMaterial = null;
         [SerializeField] private Material teleportMaterial = null;
         [SerializeField] private Material stickyMaterial = null;
+        [SerializeField] private ParticleSystem teleportEffect = null;
 
         public BaseState BaseState { get; set; }
 
@@ -53,10 +54,30 @@ namespace VRJam2020
                 break;
             case CollisionState.Teleport:
                 ballRenderer.material = teleportMaterial;
+                teleportEffect.Play();
                 break;
             case CollisionState.Sticky:
                 ballRenderer.material = stickyMaterial;
                 break;
+            }
+
+            if (IsGlowing)
+            {
+                if (CollisionState == CollisionState.Teleport)
+                    ballRenderer.material.SetColor("_EmissionColor", new Color(0, 0.7490196f, 0.8117647f)*4);
+                if (CollisionState == CollisionState.Sticky)
+                    ballRenderer.material.SetColor("_EmissionColor", new Color(0.06517824f, 0.28f, 0.079f)*2);
+                if (CollisionState == CollisionState.Bounce)
+                    ballRenderer.material.SetColor("_EmissionColor", new Color(0.6f, 0.6f, 0.6f)*2);
+            }
+            else
+            {
+                if (CollisionState == CollisionState.Teleport)
+                    ballRenderer.material.SetColor("_EmissionColor", new Color(0, 0.7490196f, 0.8117647f, 0f));
+                if (CollisionState == CollisionState.Sticky)
+                    ballRenderer.material.SetColor("_EmissionColor", new Color(0.06517824f, 0.28f, 0.079f));
+                if (CollisionState == CollisionState.Bounce)
+                    ballRenderer.material.SetColor("_EmissionColor", new Color(0f, 0f, 0f, 0f) * 1);
             }
         }
 

@@ -637,6 +637,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ef94e73d5607784fbcbba8de4155b1e, type: 3}
+--- !u!23 &1112196549 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 23000011214558378, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+    type: 3}
+  m_PrefabInstance: {fileID: 1432296942}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1321280112
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,6 +908,11 @@ PrefabInstance:
       propertyPath: solidColorOverlay
       value: 
       objectReference: {fileID: 1792764159}
+    - target: {fileID: 2787686033388852304, guid: 1a6c6cf1c3750c8469a115e8acb64291,
+        type: 3}
+      propertyPath: ballRenderer
+      value: 
+      objectReference: {fileID: 1112196549}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a6c6cf1c3750c8469a115e8acb64291, type: 3}
 --- !u!1 &1547332993
