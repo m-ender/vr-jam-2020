@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.vrjam2020.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\paulo\\vr-jam-2020\\VR Jam 2020\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "D:\\Development\\Repositories\\vr-jam-2020\\VR Jam 2020\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "Orb and Sorcery [Testing]"
