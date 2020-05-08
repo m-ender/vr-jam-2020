@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -26,7 +27,14 @@ namespace VRJam2020
 
         protected override void Die()
         {
+            StartCoroutine(DestroyColliderNextFrame());
             AnimateDeath();
+        }
+
+        private IEnumerator DestroyColliderNextFrame()
+        {
+            yield return null;
+            Destroy(GetComponent<Collider>());
         }
 
         private void AnimateDeath()
