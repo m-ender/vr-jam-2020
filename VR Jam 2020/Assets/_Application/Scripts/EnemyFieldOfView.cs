@@ -4,7 +4,7 @@ namespace VRJam2020
 {
 	public class EnemyFieldOfView : MonoBehaviour
 	{
-		[SerializeField] private Enemy enemy;
+		[SerializeField] private Enemy enemy = null;
 
 		private void OnTriggerEnter(Collider other)
 		{

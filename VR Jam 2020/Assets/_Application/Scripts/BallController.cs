@@ -25,8 +25,8 @@ namespace VRJam2020
         [SerializeField] private float flyingSpeed = 10;
         [SerializeField] private float fadeTime = 1;
 
-        [SerializeField] private float hoveringAmplitude;
-        [SerializeField] private float hoveringFrequency;
+        [SerializeField] private float hoveringAmplitude = 0.2f;
+        [SerializeField] private float hoveringFrequency = 2f;
 
         private Vector3 initialPosition;
 

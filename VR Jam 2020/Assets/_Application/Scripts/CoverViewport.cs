@@ -5,7 +5,7 @@ namespace VRJam2020
 	[RequireComponent(typeof(RectTransform))]
 	public class CoverViewport : MonoBehaviour
 	{
-		[SerializeField] private Camera targetCamera;
+		[SerializeField] private Camera targetCamera = null;
 
 		private RectTransform rectTransform;
 

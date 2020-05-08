@@ -5,7 +5,7 @@ namespace VRJam2020
 	[ExecuteAlways]
 	public class KeepOnHorizontalPlane : MonoBehaviour
 	{
-		[SerializeField] private Transform reference;
+		[SerializeField] private Transform reference = null;
 
 		private void Update()
 		{

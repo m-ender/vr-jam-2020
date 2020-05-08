@@ -7,7 +7,7 @@ namespace VRJam2020
 {
     public class Victory : MonoBehaviour
     {
-        [SerializeField] private float successScreenDuration;
+        [SerializeField] private float successScreenDuration = 10f;
 
         private TextManager textManager;
         private Image solidColorOverlay;

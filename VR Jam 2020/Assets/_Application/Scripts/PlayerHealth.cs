@@ -2,18 +2,17 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Valve.VR;
 
 namespace VRJam2020
 {
     public class PlayerHealth : Health
     {
-        [SerializeField] private Color damageHighlightColor;
-        [SerializeField] private float damageHighlightTime;
+        [SerializeField] private Color damageHighlightColor = Color.red;
+        [SerializeField] private float damageHighlightTime = 0.3f;
 
-        [SerializeField] private Image solidColorOverlay;
-        [SerializeField] private TextManager textManager;
-        [SerializeField] private float gameOverDuration;
+        [SerializeField] private Image solidColorOverlay = null;
+        [SerializeField] private TextManager textManager = null;
+        [SerializeField] private float gameOverDuration = 5f;
 
         protected override void Die()
         {

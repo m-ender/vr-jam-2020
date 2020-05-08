@@ -10,12 +10,12 @@ namespace VRJam2020
     [RequireComponent(typeof(NavMeshAgent))]
     public class EnemyHealth : Health
     {
-        [SerializeField] private Renderer modelRenderer;
+        [SerializeField] private Renderer modelRenderer = null;
 
-        [SerializeField] private Color damageHighlightColor;
-        [SerializeField] private float damageHighlightTime;
-        [SerializeField] private float particleEffectTime;
-        [SerializeField] private Material deathMaterial;
+        [SerializeField] private Color damageHighlightColor = Color.red;
+        [SerializeField] private float damageHighlightTime = 0.2f;
+        [SerializeField] private float particleEffectTime = 5f;
+        [SerializeField] private Material deathMaterial = null;
 
         private Enemy enemy;
         private NavMeshAgent navMeshAgent;
