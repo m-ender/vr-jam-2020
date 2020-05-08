@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 namespace VRJam2020
 {
@@ -22,8 +23,11 @@ namespace VRJam2020
         }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.transform.parent?.GetComponent<BallState>() 
-                && other.gameObject.transform.parent.GetComponent<BallState>().CollisionState == CollisionState.Teleport)
+            var ballState = other.GetComponentInParent<BallState>();
+            var player = other.GetComponentInParent<Player>();
+
+            if (ballState && ballState.CollisionState == CollisionState.Teleport
+                || player)
             {
                 if (abilityDependant)
                 {
