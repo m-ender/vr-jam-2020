@@ -153,7 +153,7 @@
                "parameters" : {
                   "deadzone_pct" : "25",
                   "overlap_pct" : "30",
-                  "sub_mode" : "click"
+                  "sub_mode" : "touch"
                },
                "path" : "/user/hand/left/input/joystick"
             },
