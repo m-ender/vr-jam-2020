@@ -53,12 +53,10 @@ Transform:
   m_GameObject: {fileID: 3915459035212605712}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_Children:
-  - {fileID: 2065039707191726875}
-  - {fileID: 4427888550234597646}
-  m_Father: {fileID: 1352847657765076485}
-  m_RootOrder: 2
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4427888550234597646}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &2597243651015448238
 ParticleSystem:
@@ -4825,7 +4823,7 @@ Transform:
   m_Children:
   - {fileID: 1497241928259298734}
   - {fileID: 1373552704528092933}
-  - {fileID: 5824555468170097098}
+  - {fileID: 4427888550234597646}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4859,12 +4857,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 3
   currentHealth: 0
-  isOneHitKill: 0
+  oneHitKill: 0
   modelRenderer: {fileID: 1497241928253600956}
   damageHighlightColor: {r: 1, g: 0, b: 0, a: 1}
   damageHighlightTime: 0.2
   particleEffectTime: 3
   emberEffect: {fileID: 2111228523633727191}
+  flakeEffect: {fileID: 2597243651015448238}
   dissolveMaterial: {fileID: 2100000, guid: bd4a143bd62fe5342a49aa70f06a4b88, type: 2}
   fireDissolveMaterial: {fileID: 2100000, guid: 8385f0e712bb65b428cf18e6ab1c29c6,
     type: 2}
@@ -4995,7 +4994,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2065039707191726875
 Transform:
   m_ObjectHideFlags: 0
@@ -5007,7 +5006,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5824555468170097098}
+  m_Father: {fileID: 4427888550234597646}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &2111228523633727191
@@ -9685,12 +9684,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8083684108651829730}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5824555468170097098}
-  m_RootOrder: 1
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children:
+  - {fileID: 2065039707191726875}
+  - {fileID: 5824555468170097098}
+  m_Father: {fileID: 1352847657765076485}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &2700311067699942751
 ParticleSystem:
