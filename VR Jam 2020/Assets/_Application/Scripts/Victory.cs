@@ -34,6 +34,7 @@ namespace VRJam2020
                     .AppendInterval(successScreenDuration)
                     .AppendCallback(() => {
                         Destroy(playerRoot);
+                        Destroy(ballState.gameObject);
                         SceneManager.LoadScene("MainScene");
                     });
 

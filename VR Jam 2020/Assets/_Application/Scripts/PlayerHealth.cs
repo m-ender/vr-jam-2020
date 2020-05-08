@@ -14,8 +14,18 @@ namespace VRJam2020
         [SerializeField] private TextManager textManager = null;
         [SerializeField] private float gameOverDuration = 5f;
 
+        private BallController ballController;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            ballController = FindObjectOfType<BallController>();
+        }
+
         protected override void Die()
         {
+            Destroy(ballController.gameObject);
+
             // Turn screen black
             solidColorOverlay.DOColor(Color.black, 1f);
             // Display message
