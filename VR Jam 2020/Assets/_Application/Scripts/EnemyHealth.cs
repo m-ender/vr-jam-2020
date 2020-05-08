@@ -30,7 +30,7 @@ namespace VRJam2020
         protected override void Die()
         {
             StartCoroutine(DestroyColliderNextFrame());
-            if (isOneHitKill)
+            if (oneHitKill)
                 AnimateOneHitDeath();
             else
                 AnimateDeath();
