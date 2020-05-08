@@ -16,6 +16,7 @@ namespace VRJam2020
         [SerializeField] private float damageHighlightTime = 0.2f;
         [SerializeField] private float particleEffectTime = 5f;
         [SerializeField] private ParticleSystem emberEffect = null;
+        [SerializeField] private ParticleSystem flakeEffect = null;
         [SerializeField] private Material dissolveMaterial = null;
         [SerializeField] private Material fireDissolveMaterial = null;
 
@@ -45,6 +46,7 @@ namespace VRJam2020
         private void AnimateDeath()
         {
             emberEffect.gameObject.SetActive(false);
+            flakeEffect.gameObject.SetActive(false);
             enemy = GetComponent<Enemy>(); navMeshAgent = GetComponent<NavMeshAgent>();
             animator = GetComponentInChildren<Animator>();
             enemy.enabled = false; navMeshAgent.enabled = false; animator.enabled = false;
