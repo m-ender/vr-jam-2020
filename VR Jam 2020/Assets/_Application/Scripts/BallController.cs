@@ -1,8 +1,5 @@
 ﻿using DG.Tweening;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using Valve.VR;
@@ -57,7 +54,7 @@ namespace VRJam2020
 
             ballState.BaseState = BaseState.Hovering;
             initialPosition = transform.localPosition;
-            rigidbody.isKinematic = true;
+            TurnOnKinematic();
         }
 
         private void Update()
@@ -118,7 +115,7 @@ namespace VRJam2020
         {
             ballState.BaseState = BaseState.FlyingToLeftHand;
             targetHand = leftHand;
-            rigidbody.isKinematic = true;
+            TurnOnKinematic();
             ActivateLeftHand();
         }
 
@@ -126,14 +123,14 @@ namespace VRJam2020
         {
             ballState.BaseState = BaseState.FlyingToRightHand;
             targetHand = rightHand;
-            rigidbody.isKinematic = true;
+            TurnOnKinematic();
             ActivateRightHand();
         }
 
         private void StopFlying()
         {
             ballState.BaseState = BaseState.Free;
-            rigidbody.isKinematic = false;
+            TurnOffKinematic();
             rigidbody.velocity = (targetHand.position - transform.position).normalized * flyingSpeed;
         }
 
@@ -293,17 +290,13 @@ namespace VRJam2020
             GameObject glue = new GameObject("Glue");
             glue.transform.SetParent(collision.transform);
             transform.SetParent(glue.transform);
-            rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
-            rigidbody.isKinematic = true;
-
-            
+            TurnOnKinematic();
         }
 
         public void Unstick()
         {
             transform.parent = null;
-            rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
-            rigidbody.isKinematic = false;
+            TurnOffKinematic();
         }
 
         private void ActivateSpyMode()
@@ -368,8 +361,18 @@ namespace VRJam2020
                 if (ballState.CollisionState == CollisionState.Bounce)
                     ballMaterial.SetColor("_EmissionColor", new Color(0f, 0f, 0f, 0f)*1);
             }
+        }
 
+        private void TurnOnKinematic()
+        {
+            rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+            rigidbody.isKinematic = true;
+        }
 
+        private void TurnOffKinematic()
+        {
+            rigidbody.isKinematic = false;
+            rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
         }
     } 
 }
