@@ -15,7 +15,9 @@ namespace VRJam2020
         [SerializeField] private Color damageHighlightColor = Color.red;
         [SerializeField] private float damageHighlightTime = 0.2f;
         [SerializeField] private float particleEffectTime = 5f;
-        [SerializeField] private Material deathMaterial = null;
+        [SerializeField] private ParticleSystem emberEffect = null;
+        [SerializeField] private Material dissolveMaterial = null;
+        [SerializeField] private Material fireDissolveMaterial = null;
 
         private Enemy enemy;
         private NavMeshAgent navMeshAgent;
@@ -28,7 +30,10 @@ namespace VRJam2020
         protected override void Die()
         {
             StartCoroutine(DestroyColliderNextFrame());
-            AnimateDeath();
+            if (isOneHitKill)
+                AnimateOneHitDeath();
+            else
+                AnimateDeath();
         }
 
         private IEnumerator DestroyColliderNextFrame()
@@ -39,10 +44,31 @@ namespace VRJam2020
 
         private void AnimateDeath()
         {
+            emberEffect.gameObject.SetActive(false);
             enemy = GetComponent<Enemy>(); navMeshAgent = GetComponent<NavMeshAgent>();
             animator = GetComponentInChildren<Animator>();
             enemy.enabled = false; navMeshAgent.enabled = false; animator.enabled = false;
-            modelRenderer.material = deathMaterial;
+            modelRenderer.material = dissolveMaterial;
+            shaderProperty = Shader.PropertyToID("_cutoff");
+            ps = GetComponentInChildren<ParticleSystem>();
+            
+            var main = ps.main;
+            main.duration = particleEffectTime;
+
+            ps.Play();
+
+            Sequence s = DOTween.Sequence();
+
+            s.Append(modelRenderer.material.DOFloat(1, shaderProperty, particleEffectTime));
+            s.AppendCallback(() => Destroy(gameObject));
+        }
+
+        private void AnimateOneHitDeath()
+        {
+            enemy = GetComponent<Enemy>(); navMeshAgent = GetComponent<NavMeshAgent>();
+            animator = GetComponentInChildren<Animator>();
+            enemy.enabled = false; navMeshAgent.enabled = false; animator.enabled = false;
+            modelRenderer.material = fireDissolveMaterial;
             shaderProperty = Shader.PropertyToID("_cutoff");
             ps = GetComponentInChildren<ParticleSystem>();
 

@@ -4859,11 +4859,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 3
   currentHealth: 0
+  isOneHitKill: 0
   modelRenderer: {fileID: 1497241928253600956}
   damageHighlightColor: {r: 1, g: 0, b: 0, a: 1}
   damageHighlightTime: 0.2
   particleEffectTime: 3
-  deathMaterial: {fileID: 2100000, guid: 634db363b5e8a1d47af43d853e2db684, type: 2}
+  emberEffect: {fileID: 2111228523633727191}
+  dissolveMaterial: {fileID: 2100000, guid: bd4a143bd62fe5342a49aa70f06a4b88, type: 2}
+  fireDissolveMaterial: {fileID: 2100000, guid: 8385f0e712bb65b428cf18e6ab1c29c6,
+    type: 2}
 --- !u!195 &4074759905308440736
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4991,7 +4995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2065039707191726875
 Transform:
   m_ObjectHideFlags: 0

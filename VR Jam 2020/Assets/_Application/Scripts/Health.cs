@@ -9,12 +9,18 @@ namespace VRJam2020
         [ReadOnly]
         [SerializeField] protected int currentHealth;
 
+        [ReadOnly]
+        [SerializeField] protected bool isOneHitKill;
+
         private void Awake()
         {
             currentHealth = initialHealth;
         }
         public void TakeDamage(int amount)
         {
+            if (initialHealth <= amount)
+                isOneHitKill = true;
+
             currentHealth -= amount;
 
             if (currentHealth <= 0)
